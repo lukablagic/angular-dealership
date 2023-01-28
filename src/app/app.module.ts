@@ -9,10 +9,16 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {MenubarModule} from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {SidebarModule} from 'primeng/sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemsComponent } from './shared/components/items/items.component';
+import {DropdownModule} from 'primeng/dropdown';
+import { AuthComponent } from './components/auth/auth.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductsListComponent } from './components/products/products-list/products-list.component';
+import { PruductItemComponent } from './components/products/products-list/pruduct-item/pruduct-item.component';
 //flex-layout
 
 
@@ -21,14 +27,19 @@ import { ItemsComponent } from './shared/components/items/items.component';
     AppComponent,
     NavbarComponent,
     SidebarComponent,
-    ItemsComponent
+    ItemsComponent,
+    AuthComponent,
+    ProductsComponent,
+    ProductsListComponent,
+    PruductItemComponent
   ],
   imports: [
     BrowserModule,
     MenubarModule,
     SidebarModule,
     InputTextModule,
-  //  FlexLayoutModule,
+    DropdownModule,
+    FormsModule,
     ButtonModule,
     BrowserAnimationsModule,
     AppRoutingModule
