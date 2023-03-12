@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -23,6 +23,7 @@ import {PanelMenuModule} from 'primeng/panelmenu';
 import {GalleriaModule} from 'primeng/galleria';
 import {CarouselModule} from 'primeng/carousel';
 import {CardModule} from 'primeng/card';
+import { FooterComponent } from './components/footer/footer.component';
 //flex-layout
 
 
@@ -35,9 +36,11 @@ import {CardModule} from 'primeng/card';
     ProductsComponent,
     ProductsListComponent,
     PruductItemComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     MenubarModule,
     SidebarModule,

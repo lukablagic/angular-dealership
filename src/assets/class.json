@@ -1,0 +1,30 @@
+[
+    {
+        "bodyId": "KOMPAKT-LIMOUSINE",
+        "bodyName": "C Class",
+        "description": "From 3000 € / month",
+        "image": "https://www.mercedes-benz.si/content/slovenia/sl/passengercars/_jcr_content/root/responsivegrid/simple_teaser_115569/simple_teaser_item_c_1316835789.component.damq6.3338866127877.jpg/home-teaser-Evo-mercedes-benz-akcijska-ponudba-c-class-40-10-2022.jpg"
+    },
+    {
+        "bodyId": "A CLASS",
+        "bodyName": "A Class",
+       "description": "From 3000 € / month",
+        "image": "https://www.mercedes-benz.si/content/slovenia/sl/passengercars/_jcr_content/root/responsivegrid/simple_teaser_115569/simple_teaser_item_c_1811508592.component.damq6.3347566006852.jpg/mercedes-benz-a-class-w177-exterior-paintfinish-04-3302x1858-08-2022.jpg"
+
+    },
+    {
+        "bodyId": "COUPE",
+        "bodyName": "B Class",
+        "description": "From 3000 € / month",
+        "image": "https://www.mercedes-benz.si/content/slovenia/sl/passengercars/_jcr_content/root/responsivegrid/simple_teaser_115569/simple_teaser_item_c_177510770.component.damq6.3345600305110.jpg/mercedes-benz-compactcars-landingpage-models-b-class-w247-2730x1536-08-2022.jpg"
+ 
+    },
+    {
+        "bodyId": "GLA",
+        "bodyName": "GLA Class",
+        "description": "From 3000 € / month",
+        "image": "https://www.mercedes-benz.si/content/slovenia/sl/passengercars/_jcr_content/root/responsivegrid/simple_teaser_115569/simple_teaser_item_c_1360853029.component.damq6.3346365707206.jpg/stage-mercedes-benz-akcijska-ponudba-GLA-01-2023-2556x852.jpg"
+      
+    }
+
+]

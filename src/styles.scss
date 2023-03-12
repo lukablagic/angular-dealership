@@ -1,2 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
- @import "../node_modules/primeflex/primeflex.scss" ;
+@import '../node_modules/primeflex/primeflex.css';
+h1{
+    font-family: "open sans", sans-serif;
+
+    color: #646464;
+}
+li{
+    font-family: "open sans", sans-serif;
+    color: #646464;
+    list-style-type: none; /* Remove bullets */
+    padding: 10px; /* Add some padding */
+}
+a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
+    color: black; /* replace with the color you want */
+    text-decoration: none;
+  }
+  

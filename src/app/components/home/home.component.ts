@@ -1,7 +1,10 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MenuItem, SelectItem } from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
+import { ClassService } from 'src/app/services/class.service';
 import { PhotoService } from 'src/app/services/photo.service';
+import { Class } from 'src/app/shared/models/class.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -26,6 +29,7 @@ export class HomeComponent implements OnInit {
     "alt": "Description for Image 1",
     "title": "Title 1"
 },];
+classes: Class [];
 
   responsiveOptions:any[] = [
       {
@@ -42,9 +46,13 @@ export class HomeComponent implements OnInit {
       }
   ];
 
-  constructor() { }
+  constructor(public classService:ClassService,private http: HttpClient) { }
 
   ngOnInit() {
+ this.http.get<Class[]>('../assets/class.json').subscribe((data: Class[]) => {
+  this.classes = data;
+console.log(this.classes)
+});
+}
 
-  }
 }

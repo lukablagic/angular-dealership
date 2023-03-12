@@ -1,15 +1,21 @@
 <p-galleria [value]="images" [showItemNavigators]="true" [showThumbnails]="false" [circular]="true">
     <ng-template pTemplate="item" let-item >
-        <img [src]="item.previewImageSrc" style="width: 100%; display: block; height: 600px;" />
+        <img [src]="item.previewImageSrc" style="width: 100%; display: block; " />
     </ng-template>
 </p-galleria>
-<h1>Recommendations</h1>
-<p-card>
-    <ng-template pTemplate="header">
-        Header content here
+<h1 >Recommendations</h1>
+<div class="card">
+<div div class="grid">
+<p-card class="col" *ngFor="let class of classes" [style]="{width: '360px'}"  >
+    <ng-template pTemplate="header" >
+        <img alt="Card" [src]="class.image">
     </ng-template>
-    Body Content
+    <p>{{class.bodyName}}</p>
     <ng-template pTemplate="footer">
-        Footer content here
+        <p>{{class.description}}</p>
+        <p-button class="flex justify-content-center " [label]="class.bodyName" icon="pi"></p-button>
+       
     </ng-template>
 </p-card>
+</div>
+</div>
