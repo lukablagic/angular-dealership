@@ -10,7 +10,6 @@ import {MenubarModule} from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {SidebarModule} from 'primeng/sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemsComponent } from './shared/components/items/items.component';
@@ -19,6 +18,11 @@ import { AuthComponent } from './components/auth/auth.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { PruductItemComponent } from './components/products/products-list/pruduct-item/pruduct-item.component';
+import { HomeComponent } from './components/home/home.component';
+import {PanelMenuModule} from 'primeng/panelmenu';
+import {GalleriaModule} from 'primeng/galleria';
+import {CarouselModule} from 'primeng/carousel';
+import {CardModule} from 'primeng/card';
 //flex-layout
 
 
@@ -26,22 +30,26 @@ import { PruductItemComponent } from './components/products/products-list/pruduc
   declarations: [
     AppComponent,
     NavbarComponent,
-    SidebarComponent,
     ItemsComponent,
     AuthComponent,
     ProductsComponent,
     ProductsListComponent,
-    PruductItemComponent
+    PruductItemComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     MenubarModule,
     SidebarModule,
     InputTextModule,
+    CardModule,
+    GalleriaModule,
     DropdownModule,
     FormsModule,
+    CarouselModule,
     ButtonModule,
     BrowserAnimationsModule,
+    PanelMenuModule,
     AppRoutingModule
   ],
   providers: [],

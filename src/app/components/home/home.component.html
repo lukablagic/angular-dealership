@@ -1,0 +1,15 @@
+<p-galleria [value]="images" [showItemNavigators]="true" [showThumbnails]="false" [circular]="true">
+    <ng-template pTemplate="item" let-item >
+        <img [src]="item.previewImageSrc" style="width: 100%; display: block; height: 600px;" />
+    </ng-template>
+</p-galleria>
+<h1>Recommendations</h1>
+<p-card>
+    <ng-template pTemplate="header">
+        Header content here
+    </ng-template>
+    Body Content
+    <ng-template pTemplate="footer">
+        Footer content here
+    </ng-template>
+</p-card>
