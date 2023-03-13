@@ -16,7 +16,7 @@ export class PhotoService {
       .toPromise()
       .then((res) => <Image[]>res.data)
       .then((data) => {
-        console.log(data);
+ 
         return data;
         
       });

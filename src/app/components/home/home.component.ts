@@ -51,7 +51,6 @@ classes: Class [];
   ngOnInit() {
  this.http.get<Class[]>('../assets/class.json').subscribe((data: Class[]) => {
   this.classes = data;
-console.log(this.classes)
 });
 }
 

@@ -51,10 +51,10 @@ export class NavbarComponent {
       {label: 'G-Class', icon: 'pi pi-fw pi-home'},
     ];
     this.itemsSearch = [
-      {label: 'New Cars', icon: 'pi pi-fw pi-home'},
-    {label:'Used Cars', icon: 'pi pi-fw pi-home'},
-    {label:'Build Your Own', icon: 'pi pi-fw pi-home'},
-    {label:'Find a Dealer', icon: 'pi pi-fw pi-home'},
+    {label: 'New Cars', icon: 'pi pi-fw pi-home', routerLink: ['/search-buy'],command: () => this.visibleSidebar2 = false},
+    {label:'Used Cars', icon: 'pi pi-fw pi-home', routerLink: ['/search-buy'],command: () => this.visibleSidebar2 = false},
+    {label:'Build Your Own', icon: 'pi pi-fw pi-home' ,routerLink: ['/custom-build'],command: () => this.visibleSidebar2 = false},
+    {label:'Find a Dealer', icon: 'pi pi-fw pi-home' ,routerLink: ['/find-dealer'],command: () => this.visibleSidebar2 = false },
     ];
     this.itemsInovations = [
     {label: 'Electric Vehicles', icon: 'pi pi-fw pi-home'},

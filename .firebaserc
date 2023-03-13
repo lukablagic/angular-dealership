@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "angular-dealership"
+  },
+  "targets": {
+    "angular-dealership": {
+      "hosting": {
+        "e-commerceApp": [
+          "angular-dealership"
+        ]
+      }
+    }
+  }
+}

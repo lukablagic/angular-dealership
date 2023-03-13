@@ -24,6 +24,17 @@ import {GalleriaModule} from 'primeng/galleria';
 import {CarouselModule} from 'primeng/carousel';
 import {CardModule} from 'primeng/card';
 import { FooterComponent } from './components/footer/footer.component';
+import { SearchBuyComponent } from './components/search-buy/search-buy.component';
+import { CarListComponent } from './components/search-buy/car-list/car-list.component';
+import { CarItemComponent } from './components/search-buy/car-list/car-item/car-item.component';
+
+import {provideFirestore,getFirestore} from '@angular/fire/firestore';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { config } from 'rxjs';
+
 //flex-layout
 
 
@@ -37,15 +48,20 @@ import { FooterComponent } from './components/footer/footer.component';
     ProductsListComponent,
     PruductItemComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    SearchBuyComponent,
+    CarListComponent,
+    CarItemComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     HttpClientModule,
     BrowserModule,
     MenubarModule,
     SidebarModule,
     InputTextModule,
     CardModule,
+    AngularFireModule,
     GalleriaModule,
     DropdownModule,
     FormsModule,
@@ -53,7 +69,10 @@ import { FooterComponent } from './components/footer/footer.component';
     ButtonModule,
     BrowserAnimationsModule,
     PanelMenuModule,
-    AppRoutingModule
+    AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]
