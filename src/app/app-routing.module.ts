@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddcarsComponent } from './components/addcars/addcars.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchBuyComponent } from './components/search-buy/search-buy.component';
 
@@ -15,8 +16,13 @@ const routes: Routes = [
     pathMatch: 'full',
     component: SearchBuyComponent,
   //  canActivate: [AuthGuard],
+  },
+  {
+    path: 'addcars',
+    pathMatch: 'full',
+    component: AddcarsComponent,
+  //  canActivate: [AuthGuard],
   }
- 
 ];
 
 @NgModule({

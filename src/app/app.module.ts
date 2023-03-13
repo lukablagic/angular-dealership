@@ -27,13 +27,15 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SearchBuyComponent } from './components/search-buy/search-buy.component';
 import { CarListComponent } from './components/search-buy/car-list/car-list.component';
 import { CarItemComponent } from './components/search-buy/car-list/car-item/car-item.component';
-
+import {ImageModule} from 'primeng/image';
+//firestore
 import {provideFirestore,getFirestore} from '@angular/fire/firestore';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { config } from 'rxjs';
+import { AddcarsComponent } from './components/addcars/addcars.component';
 
 //flex-layout
 
@@ -51,7 +53,8 @@ import { config } from 'rxjs';
     FooterComponent,
     SearchBuyComponent,
     CarListComponent,
-    CarItemComponent
+    CarItemComponent,
+    AddcarsComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -62,6 +65,7 @@ import { config } from 'rxjs';
     InputTextModule,
     CardModule,
     AngularFireModule,
+    ImageModule,
     GalleriaModule,
     DropdownModule,
     FormsModule,
