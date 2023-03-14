@@ -6,27 +6,32 @@ import { SearchBuyComponent } from './components/search-buy/search-buy.component
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
     path: 'home',
     pathMatch: 'full',
     component: HomeComponent,
-  //  canActivate: [AuthGuard],
+    //  canActivate: [AuthGuard],
   },
   {
     path: 'search-buy',
     pathMatch: 'full',
     component: SearchBuyComponent,
-  //  canActivate: [AuthGuard],
+    //  canActivate: [AuthGuard],
   },
   {
     path: 'addcars',
     pathMatch: 'full',
     component: AddcarsComponent,
-  //  canActivate: [AuthGuard],
-  }
+    //  canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

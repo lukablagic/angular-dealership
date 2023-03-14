@@ -36,7 +36,6 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { config } from 'rxjs';
 import { AddcarsComponent } from './components/addcars/addcars.component';
-
 //flex-layout
 
 
