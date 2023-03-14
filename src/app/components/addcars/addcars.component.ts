@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Form } from '@angular/forms';
 import { CarFormComponent } from 'src/app/shared/components/car-form/car-form.component';
 import { Car } from 'src/app/shared/models/car.model';
 
@@ -10,33 +11,8 @@ import { Car } from 'src/app/shared/models/car.model';
  // imports: [CarFormComponent],
 })
 export class AddcarsComponent {
+//@Input carForm: Form; 
 
-  models: Car[];
-  selectedModel: Car;
-  carPrice: number;
-  carYear: number;
-  carMileage: number;
-  carFuel: string;
-  carTransmission: string;
-  engineSize: number;
-  engineSizeOptions: number[];
-  selectedEngine: number;
-
-constructor() {
-  this.models = [
-    {model: 'S Class'},
-    {model: 'A Class'},
-    {model: 'E Class'},
-    {model: 'C Class'},
-    {model: 'B Class'},
-    {model: 'V Class'},
-    {model: 'GLA Class'},
-    {model: 'GLC Class'},
-    {model: 'GLE Class'},
-    {model: 'GLS Class'},
-    {model: 'G Class'},
-];
-}
 
 }
 

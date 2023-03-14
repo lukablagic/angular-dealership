@@ -36,6 +36,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { config } from 'rxjs';
 import { AddcarsComponent } from './components/addcars/addcars.component';
+import { CarFormComponent } from './shared/components/car-form/car-form.component';
+
 //flex-layout
 
 
@@ -52,6 +54,7 @@ import { AddcarsComponent } from './components/addcars/addcars.component';
     FooterComponent,
     SearchBuyComponent,
     CarListComponent,
+    CarFormComponent,
     CarItemComponent,
     AddcarsComponent
   ],
