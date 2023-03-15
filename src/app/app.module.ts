@@ -27,6 +27,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SearchBuyComponent } from './components/search-buy/search-buy.component';
 import { CarListComponent } from './components/search-buy/car-list/car-list.component';
 import { CarItemComponent } from './components/search-buy/car-list/car-item/car-item.component';
+import {SliderModule} from 'primeng/slider';
 import {ImageModule} from 'primeng/image';
 //firestore
 import {provideFirestore,getFirestore} from '@angular/fire/firestore';
@@ -37,7 +38,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { config } from 'rxjs';
 import { AddcarsComponent } from './components/addcars/addcars.component';
 import { CarFormComponent } from './shared/components/car-form/car-form.component';
-
+import {DialogModule} from 'primeng/dialog';
+import {CheckboxModule} from 'primeng/checkbox';
 //flex-layout
 
 
@@ -65,7 +67,9 @@ import { CarFormComponent } from './shared/components/car-form/car-form.componen
     MenubarModule,
     SidebarModule,
     InputTextModule,
+    DialogModule,
     CardModule,
+    SliderModule,
     AngularFireModule,
     ImageModule,
     GalleriaModule,
@@ -73,6 +77,7 @@ import { CarFormComponent } from './shared/components/car-form/car-form.componen
     FormsModule,
     CarouselModule,
     ButtonModule,
+    CheckboxModule,
     BrowserAnimationsModule,
     PanelMenuModule,
     AppRoutingModule,

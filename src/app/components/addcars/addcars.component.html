@@ -1,26 +1,26 @@
-<div class="grid">
+<div class="p-grid">
   <div class="col-3">
     <h1>Settings</h1>
-<app-car-form ></app-car-form>
+<app-car-form (carEventEmmiter)="setCar($event)"></app-car-form>
   </div>
-  <div class="col">
-    <div class="grid">
-      <div class="col">
+  <div class="p-col">
+    <div class="p-grid">
+      <div class="p-col">
         <p-image
           src="https://imgd.aeplcdn.com/0x0/n/cw/ec/48067/s-class-exterior-right-front-three-quarter-3.jpeg"
           alt="Image"
           width="100%"
         ></p-image>
       </div>
-      <div class="col">
+      <div class="p-col">
         <h2>Model</h2>
-        <h3>s s-class</h3>
+        <h3>{{car.model}}</h3>
         <h2>Car Price</h2>
-        <h3>60000 €</h3>
+        <h3>{{car.price}}</h3>
         <h2>Engine Size</h2>
-        <h3>3000 cc</h3>
-        <h2>Car Location</h2>
-        <h3>Maribor</h3>
+        <h3>{{car.engineSize}} cc</h3>
+        <h2>Mileage</h2>
+        <h3>{{car.mileage}}</h3>
         <button
           pButton
           type="button"
@@ -30,16 +30,25 @@
         >
           Add
         </button>
+        <p-button (click)="showDialog()" icon="pi pi-external-link" class="dialog" label="Preview"></p-button>
+        <p-dialog header="Header" [(visible)]="display" [style]="{width: '50vw'}">
+
+            <ng-template pTemplate="footer">
+                <p-button icon="pi pi-check" (click)="display=false" label="Ok" styleClass="p-button-text"></p-button>
+            </ng-template>
+        </p-dialog>
+      
       </div>
-      <div class="col">
+      <div class="p-col">
         <h2>Transmission</h2>
-        <h3>AWD</h3>
-        <h2>Body Type</h2>
-        <h3>Limousine</h3>
+        <h3>{{car.transmission}}</h3>
+        <h2>Year</h2>
+        <h3>{{car.year}}</h3>
         <h2>Engine Type</h2>
-        <h3>Disel</h3>
+        <h3>{{car.fuel}}</h3>
         <h2>Car Features</h2>
-        <h3>Heather,leather</h3>
+       
+        <h3>{{equipment.airConditioning}}</h3>
       </div>
     </div>
   </div>
