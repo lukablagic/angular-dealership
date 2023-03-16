@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Form } from '@angular/forms';
+import { CarsAPIService } from 'src/app/services/cars-api.service';
 import { CarFormComponent } from 'src/app/shared/components/car-form/car-form.component';
 import { Car } from 'src/app/shared/models/car.model';
 import { Equipment } from 'src/app/shared/models/equipment.model';
@@ -15,7 +16,7 @@ export class AddcarsComponent {
   car: Car = new Car();
   display: boolean = false;
   equipment: Equipment;
-constructor() {
+constructor(private carApi: CarsAPIService) {
   this.equipment = new Equipment(false, false, false, false, false, false, false, false);
 }
   showDialog() {
@@ -25,5 +26,8 @@ constructor() {
   setCar(car: Car) {
     this.car = car;
     this.equipment = car.equipment;
+  }
+  addCar() {
+  this.carApi.addCar(this.car);
   }
 }

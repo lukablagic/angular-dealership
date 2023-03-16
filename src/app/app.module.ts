@@ -26,7 +26,7 @@ import {CardModule} from 'primeng/card';
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchBuyComponent } from './components/search-buy/search-buy.component';
 import { CarListComponent } from './components/search-buy/car-list/car-list.component';
-import { CarItemComponent } from './components/search-buy/car-list/car-item/car-item.component';
+import { CarItemComponent } from '../app/components/search-buy/car-list/car-item/car-item.component';
 import {SliderModule} from 'primeng/slider';
 import {ImageModule} from 'primeng/image';
 //firestore
@@ -40,6 +40,12 @@ import { AddcarsComponent } from './components/addcars/addcars.component';
 import { CarFormComponent } from './shared/components/car-form/car-form.component';
 import {DialogModule} from 'primeng/dialog';
 import {CheckboxModule} from 'primeng/checkbox';
+import { AdminCarsComponent } from './components/admin-cars/admin-cars.component';
+import { AdminCarListComponent } from './components/admin-cars/admin-car-list/admin-car-list.component';
+import { AdminCarItemComponent } from './components/admin-cars/admin-car-list/admin-car-item/admin-car-item.component';
+import { FiltersComponent } from './shared/components/filters/filters.component';
+import { DetailedCarComponent } from './shared/components/detailed-car/detailed-car.component';
+
 //flex-layout
 
 
@@ -58,7 +64,12 @@ import {CheckboxModule} from 'primeng/checkbox';
     CarListComponent,
     CarFormComponent,
     CarItemComponent,
-    AddcarsComponent
+    AddcarsComponent,
+    AdminCarsComponent,
+    AdminCarListComponent,
+    AdminCarItemComponent,
+    FiltersComponent,
+    DetailedCarComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

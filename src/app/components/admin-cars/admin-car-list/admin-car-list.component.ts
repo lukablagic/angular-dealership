@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
 import { CarsAPIService } from 'src/app/services/cars-api.service';
 import { Car } from 'src/app/shared/models/car.model';
 
 @Component({
-  selector: 'app-car-list',
-  templateUrl: './car-list.component.html',
-  styleUrls: ['./car-list.component.scss']
+  selector: 'app-admin-car-list',
+  templateUrl: './admin-car-list.component.html',
+  styleUrls: ['./admin-car-list.component.scss']
 })
-export class CarListComponent {
-
+export class AdminCarListComponent {
   cars: Car[];
 
   constructor(private api:CarsAPIService) {
@@ -27,7 +24,4 @@ loadCars() {
   this.cars = data;
   });
 }
-
-
 }
-

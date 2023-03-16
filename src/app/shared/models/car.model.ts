@@ -1,8 +1,8 @@
 import { Equipment } from "./equipment.model";
 
-export class Car {
-id?: string;
-  model?: String;
+export class Car extends Equipment {
+  id?: string;
+  model?: string;
   price?: number;
   year?: number;
   mileage?: number;
@@ -11,17 +11,36 @@ id?: string;
   engineSize?: number;
   equipment?: Equipment;
 
-
   constructor() {
+    super(false, false, false, false, false, false, false, false);
     this.model = '';
     this.price = 0;
     this.year = 0;
     this.mileage = 0;
-    this.fuel = 'Disel';
+    this.fuel = 'Diesel';
     this.transmission = 'RWD';
     this.engineSize = 0;
-    this.equipment =  new Equipment(false, false, false, false, false, false, false, false);
-
   }
 
+  toObject(): any {
+    return {
+      model: this.model,
+      price: this.price,
+      year: this.year,
+      mileage: this.mileage,
+      fuel: this.fuel,
+      transmission: this.transmission,
+      engineSize: this.engineSize,
+      equipment: {
+        airConditioning: this.airConditioning,
+        cruiseControl: this.cruiseControl,
+        parkingSensors: this.parkingSensors,
+        powerSteering: this.powerSteering,
+        powerWindows: this.powerWindows,
+        powerMirrors: this.powerMirrors,
+        ABS: this.ABS,
+        airbags: this.airbags,
+      },
+    };
+  }
 }

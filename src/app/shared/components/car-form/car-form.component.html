@@ -15,7 +15,7 @@
         pInputText
         [ngModelOptions]="{ standalone: true }"
         [(ngModel)]="carPrice"
-        (keypress)="sendCarData(car)"
+        (ngModelChange)="sendCarData(car)"
       />
       <h2>Engine Size</h2>
       <input
@@ -23,11 +23,15 @@
         pInputText
         [ngModelOptions]="{ standalone: true }"
         [(ngModel)]="selectedEngine"
-        (keypress)="sendCarData(car)"
+        (ngModelChange)="sendCarData(car)"
       />
-      <h2>Mileage {{val2}}</h2>
-      <input type="text" pInputText  [min]="0" [max]="150000" [(ngModel)]="val2" readonly />
-      <p-slider [(ngModel)]="val2"  (keypress)="sendCarData(car)" ></p-slider>
+      <h2>Mileage</h2>
+      <input
+      type="text"
+      pInputText
+      [(ngModel)]="carMileage"
+      (ngModelChange)="sendCarData(car)"
+    />
     
   </div>
   <div class="p-col">
@@ -37,56 +41,56 @@
       pInputText
       [ngModelOptions]="{ standalone: true }"
       [(ngModel)]="carTransmission"
-      (keypress)="sendCarData(car)" 
+      (ngModelChange)="sendCarData(car)" 
     />
     <h2>Year</h2>
     <input
       type="text"
       pInputText
       [(ngModel)]="carYear"
-      (keypress)="sendCarData(car)"
+      (ngModelChange)="sendCarData(car)"
     />
     <h2>Engine Type</h2>
     <input
       type="text"
       pInputText
       [(ngModel)]="carFuel"
-      (keypress)="sendCarData(car)"
+      (ngModelChange)="sendCarData(car)"
     />
     <h2>Car Features</h2>
     <p-button (click)="showDialog()" icon="pi pi-external-link" class="dialog" label="Select"></p-button>
     <p-dialog header="Header" [(visible)]="display" [style]="{width: '50vw'}">
         <div class="field-checkbox">
-            <p-checkbox name="group1" value="true" [(ngModel)]="airConditioning" inputId="ny"></p-checkbox>
-            <label for="ny" (click)="sendCarData(car)">Air Contitioning</label>
+            <p-checkbox name="group1" [binary]="true"  (click)="sendCarData(car)" [(ngModel)]="airConditioning" inputId="ny"></p-checkbox>
+            <label for="ny" >Air Contitioning</label>
         </div>
         <div class="field-checkbox">
-            <p-checkbox name="group1" value="New York" [(ngModel)]="cruiseControl" inputId="ny"></p-checkbox>
-            <label for="ny" (click)="sendCarData(car)">Cruise Control</label>
+            <p-checkbox name="group1" [binary]="true" (ngModelChange)="sendCarData(car)" [(ngModel)]="cruiseControl" inputId="ny"></p-checkbox>
+            <label for="ny" >Cruise Control</label>
         </div>
         
         <div class="field-checkbox">
-            <p-checkbox name="group1" value="New York" [(ngModel)]="parkingSensors" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" [binary]="true" (click)="sendCarData(car)" [(ngModel)]="parkingSensors" inputId="ny"></p-checkbox>
             <label for="ny">Parking Sensors</label>
         </div>
         <div class="field-checkbox">
-            <p-checkbox name="group1" value="New York" [(ngModel)]="powerSteering" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" [binary]="true" (click)="sendCarData(car)" [(ngModel)]="powerSteering" inputId="ny"></p-checkbox>
             <label for="ny">Power Steering</label>
         </div>
         <div class="field-checkbox">
-            <p-checkbox name="group1" value="New York" [(ngModel)]="powerWindows" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" [binary]="true" (click)="sendCarData(car)" [(ngModel)]="powerWindows" inputId="ny"></p-checkbox>
             <label for="ny">Power Windows</label>
         </div>
         <div class="field-checkbox">
-            <p-checkbox name="group1" value="New York" [(ngModel)]="powerMirrors" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" [binary]="true" (click)="sendCarData(car)" [(ngModel)]="powerMirrors" inputId="ny"></p-checkbox>
             <label for="ny">Power Mirror</label>
         </div>
         <div class="field-checkbox">
-            <p-checkbox name="group1" value="New York" [(ngModel)]="ABS" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" [binary]="true" (click)="sendCarData(car)" [(ngModel)]="ABS" inputId="ny"></p-checkbox>
             <label for="ny">ABS</label>
         </div>
         <div class="field-checkbox">
-            <p-checkbox name="group1" value="New York" [(ngModel)]="airbags" inputId="ny"></p-checkbox>
+            <p-checkbox name="group1" [binary]="true" (click)="sendCarData(car)" [(ngModel)]="airbags" inputId="ny"></p-checkbox>
             <label for="ny">Air Bags</label>
         </div>
         <ng-template pTemplate="footer">

@@ -16,7 +16,7 @@
         <h2>Model</h2>
         <h3>{{car.model}}</h3>
         <h2>Car Price</h2>
-        <h3>{{car.price}}</h3>
+        <h3>{{car.price}} €</h3>
         <h2>Engine Size</h2>
         <h3>{{car.engineSize}} cc</h3>
         <h2>Mileage</h2>
@@ -27,6 +27,7 @@
           lable="Success"
           iconPos="left"
           class="p-button-success"
+          (click)="addCar()"
         >
           Add
         </button>
@@ -34,7 +35,7 @@
         <p-dialog header="Header" [(visible)]="display" [style]="{width: '50vw'}">
 
             <ng-template pTemplate="footer">
-                <p-button icon="pi pi-check" (click)="display=false" label="Ok" styleClass="p-button-text"></p-button>
+                <p-button icon="pi pi-check" (click)="display=false" label="Ok"  styleClass="p-button-text"></p-button>
             </ng-template>
         </p-dialog>
       
@@ -47,10 +48,41 @@
         <h2>Engine Type</h2>
         <h3>{{car.fuel}}</h3>
         <h2>Car Features</h2>
-       
-        <h3>{{equipment.airConditioning}}</h3>
+        <p-button (click)="showDialog()" icon="pi pi-external-link" class="dialog" label="Select"></p-button>
+        <p-dialog header="Header" [(visible)]="display" [style]="{width: '50vw'}">
+            <div class="field-checkbox">
+                <p  *ngIf="equipment.airConditioning" >Air Conditioning</p>
+            </div>
+            <div class="field-checkbox">
+                <p  *ngIf="equipment.cruiseControl" >Cruise Control</p>
+            </div>
+            
+            <div class="field-checkbox">
+                <p  *ngIf="equipment.parkingSensors">Parking Sensors</p>
+            </div>
+            <div class="field-checkbox">
+              <p  *ngIf="equipment.powerSteering" >Power Steering</p>
+            </div>
+            <div class="field-checkbox">
+                <p  *ngIf="equipment.powerWindows" >Power Windows</p>
+            </div>
+            <div class="field-checkbox">
+                <p  *ngIf="equipment.powerMirrors">Power Mirrors</p>
+            </div>
+            <div class="field-checkbox">
+                <p  *ngIf="equipment.ABS" >ABS</p>
+            </div>
+            <div class="field-checkbox">
+               <p  *ngIf="equipment.airbags" >Air Bags</p>
+            </div>
+            <ng-template pTemplate="footer">
+                <p-button icon="pi pi-check" (click)="display=false" label="Ok" styleClass="p-button-text"></p-button>
+            </ng-template>
+        </p-dialog>
       </div>
     </div>
   </div>
 </div>
-<h1>Car Description</h1>
+<h1>Car List for Users</h1>
+<app-admin-cars></app-admin-cars>
+
