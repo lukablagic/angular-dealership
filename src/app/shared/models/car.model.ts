@@ -3,6 +3,7 @@ import { Equipment } from "./equipment.model";
 export class Car extends Equipment {
   id?: string;
   model?: string;
+  image?: string;
   price?: number;
   year?: number;
   mileage?: number;
@@ -20,11 +21,13 @@ export class Car extends Equipment {
     this.fuel = 'Diesel';
     this.transmission = 'RWD';
     this.engineSize = 0;
+    this.image = 'https://imgd.aeplcdn.com/0x0/n/cw/ec/48067/s-class-exterior-right-front-three-quarter-3.jpeg';
   }
 
   toObject(): any {
     return {
       model: this.model,
+      image: this.image,
       price: this.price,
       year: this.year,
       mileage: this.mileage,

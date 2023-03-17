@@ -1,26 +1,28 @@
 <div>
-    <p-card
-      class="cardMain"
-      [style]="{ width: '360px' }"
-      styleClass="p-card-shadow"
-    >
-      <ng-template pTemplate="header">
-        <img
-          class="cImg"
-          alt="Card"
-         src="{{car.image}}"
-        />
-      </ng-template>
+  <p-card
+    class="cardMain"
+    [style]="{ width: '360px' }"
+    styleClass="p-card-shadow"
+  >
+    <ng-template pTemplate="header">
+      <img class="cImg" alt="Card" src="{{ car.image }}" />
+    </ng-template>
 
-      <ng-template pTemplate="footer">
-        <h3>{{car.model}}</h3>
+    <ng-template pTemplate="footer">
+      <h3>{{ car.model }}</h3>
+      <p-button
+        class="d-flex justify-content-center w-100"
+        styleClass="p-button-lg p-button-warning w-100"
+        label="Buy Now"
+        icon="pi pi-plus"
+      ></p-button>
+      <a href="/details">
         <p-button
           class="d-flex justify-content-center w-100"
-          styleClass="p-button-lg p-button-warning w-100"
-          label="Buy Now"
-        
-          icon="pi pi-plus"
+          styleClass="p-button-lg p-button-blue w-100"
+          label="Details"
         ></p-button>
-      </ng-template>
-    </p-card>
-  </div>
+      </a>
+    </ng-template>
+  </p-card>
+</div>

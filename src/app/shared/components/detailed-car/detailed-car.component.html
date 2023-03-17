@@ -2,22 +2,17 @@
   <div class="p-col-12 p-md-6 p-lg-7">
     <div class="p-card p-shadow-2">
       <div class="p-card-header">
-        <h2>Mercedes-Benz EQA</h2>
+        <h2>Mercedes-Benz {{ car.model }}</h2>
         <h3>Electric Intelligence</h3>
       </div>
       <div class="p-card-body">
-        <img
-          src="https://www.mercedes-benz.si/etc/designs/mb-passenger-cars/rc/skin/imgs/models/eqa/eqa.webp"
-          alt="Mercedes-Benz "
-          class="car-image"
-        />
         <div class="car-details">
           <ul>
-            <li><strong>Model:</strong> EQA</li>
-            <li><strong>Price:</strong> Starting at €48,000</li>
-            <li><strong>Range:</strong> Up to 424 km</li>
+            <li><strong>Model:</strong> {{ car.model }}</li>
+            <li><strong>Price:</strong> Starting at {{ car.price }}</li>
+            <li><strong>Transmission:</strong> {{ car.transmission }}</li>
             <li><strong>Acceleration:</strong> 0-100 km/h in 8.9 seconds</li>
-            <li><strong>Power:</strong> 190 hp</li>
+            <li><strong>Engine Size:</strong> {{ car.engineSize }}</li>
           </ul>
         </div>
       </div>
@@ -26,32 +21,19 @@
   <div class="p-col-12 p-md-6 p-lg-5">
     <div class="p-card p-shadow-2">
       <div class="p-card-header">
-        <h2>Customize your EQA</h2>
+        <h2>Overview</h2>
       </div>
-      <div class="p-card-body">
-        <!--     <form>
-            <div class="p-field">
-              <label for="color">Color</label>
-              <p-dropdown id="color" [options]="colors" [(ngModel)]="selectedColor"></p-dropdown>
-            </div>
-            <div class="p-field">
-              <label for="interior">Interior</label>
-              <p-dropdown id="interior" [options]="interiors" [(ngModel)]="selectedInterior"></p-dropdown>
-            </div>
-            <div class="p-field">
-              <label for="wheels">Wheels</label>
-              <p-dropdown id="wheels" [options]="wheels" [(ngModel)]="selectedWheels"></p-dropdown>
-            </div>
-            <button class="p-button p-mt-3" (click)="customize()">Customize</button>
-          </form>-->
-      </div>
+      <img class="car" src="https://imgd.aeplcdn.com/0x0/n/cw/ec/48067/s-class-exterior-right-front-three-quarter-3.jpeg" alt="selected car image">
     </div>
   </div>
   <div class="p-grid">
     <div class="p-col-12 p-md-4">
       <div class="card">
         <div class="card-header">
-          <img src="https://resources.formula-e.pulselive.com/photo-resources/2022/11/08/bf42470c-4b6a-4ee3-8b3b-2b569df82759/kU1f4k7U.jpg?width=1440&height=810" alt="Power" />
+          <img
+            src="https://resources.formula-e.pulselive.com/photo-resources/2022/11/08/bf42470c-4b6a-4ee3-8b3b-2b569df82759/kU1f4k7U.jpg?width=1440&height=810"
+            alt="Power"
+          />
         </div>
         <div class="card-body">
           <h3>Performance</h3>
@@ -63,16 +45,22 @@
             <li>Maximum torque: 375 Nm</li>
             <li>Battery capacity: 66.5 kWh (usable)</li>
             <li>Electric range (WLTP): up to 426 km</li>
-            <li>Charging time at a public charging station (DC/fast charging, max. capacity 100 kW): approx. 30 minutes (10-80%)</li>
+            <li>
+              Charging time at a public charging station (DC/fast charging, max.
+              capacity 100 kW): approx. 30 minutes (10-80%)
+            </li>
           </ul>
         </div>
       </div>
     </div>
-  
+
     <div class="p-col-12 p-md-4">
       <div class="card">
         <div class="card-header">
-          <img src="https://www.mercedes-benz.co.uk/passengercars/mercedes-benz-cars/electric-vehicles/electric-car-range/bev-range/_jcr_content/swipeableteaserbox/par/swipeableteaser_copy/asset.MQ6.12.20210121120929.jpeg" alt="Emissions" />
+          <img
+            src="https://www.mercedes-benz.co.uk/passengercars/mercedes-benz-cars/electric-vehicles/electric-car-range/bev-range/_jcr_content/swipeableteaserbox/par/swipeableteaser_copy/asset.MQ6.12.20210121120929.jpeg"
+            alt="Emissions"
+          />
         </div>
         <div class="card-body">
           <h3>Energy Efficiency</h3>
@@ -84,63 +72,78 @@
         </div>
       </div>
     </div>
-  
+
     <div class="p-col-12 p-md-4">
       <div class="card">
         <div class="card-header">
-          <img src="https://www.wemeanbusinesscoalition.org/wp-content/uploads/2019/05/19C0393_001-1.jpg" alt="Charging" />
+          <img
+            src="https://www.wemeanbusinesscoalition.org/wp-content/uploads/2019/05/19C0393_001-1.jpg"
+            alt="Charging"
+          />
         </div>
         <div class="card-body">
           <h3>Charging</h3>
           <ul>
             <li>Charging time at a domestic socket: approx. 9 hours</li>
-            <li>Charging time at a wallbox or public charging station (AC charging, max. capacity 11 kW): approx. 5.75 hours (0-100%)</li>
-            <li>Charging time at a public charging station (DC/fast charging, max. capacity 100 kW): approx. 30 minutes (10-80%)</li>
+            <li>
+              Charging time at a wallbox or public charging station (AC
+              charging, max. capacity 11 kW): approx. 5.75 hours (0-100%)
+            </li>
+            <li>
+              Charging time at a public charging station (DC/fast charging, max.
+              capacity 100 kW): approx. 30 minutes (10-80%)
+            </li>
             <li>Mercedes-Benz Wallbox (incl. installation): €1,196.25</li>
           </ul>
         </div>
       </div>
     </div>
-    </div>
-    </div>
-   
+  </div>
+</div>
 
-    <div class="p-grid">
-        <div class="p-col-12 p-md-6 p-lg-8">
-          <div class="card">
-            <h3>Comfort and Convenience</h3>
-            <div class="p-grid p-nogutter">
-              <div class="p-col-12 p-md-4">
-                <ul class="car-details-list">
-                  <li><i class="pi pi-check"></i> Ambient lighting</li>
-                  <li><i class="pi pi-check"></i> Dual-zone automatic climate control</li>
-                  <li><i class="pi pi-check"></i> Keyless entry and go</li>
-                  <li><i class="pi pi-check"></i> Multifunction steering wheel</li>
-                </ul>
-              </div>
-              <div class="p-col-12 p-md-4">
-                <ul class="car-details-list">
-                  <li><i class="pi pi-check"></i> Power-adjustable front seats with memory function</li>
-                  <li><i class="pi pi-check"></i> Power-folding side mirrors</li>
-                  <li><i class="pi pi-check"></i> Rain-sensing windshield wipers</li>
-                  <li><i class="pi pi-check"></i> Rearview camera</li>
-                </ul>
-              </div>
-              <div class="p-col-12 p-md-4">
-                <ul class="car-details-list">
-                  <li><i class="pi pi-check"></i> Remote engine start</li>
-                  <li><i class="pi pi-check"></i> Sunroof/moonroof</li>
-                  <li><i class="pi pi-check"></i> Touchpad controller</li>
-                  <li><i class="pi pi-check"></i> Wireless device charging</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+<div class="p-grid">
+  <div class="p-col-12 p-md-6 p-lg-8">
+    <div class="card">
+      <h3>Comfort and Convenience</h3>
+      <div class="p-grid p-nogutter">
+        <div class="p-col-12 p-md-4">
+          <ul class="car-details-list">
+            <li><i class="pi pi-check"></i> Ambient lighting</li>
+            <li>
+              <i class="pi pi-check"></i> Dual-zone automatic climate control
+            </li>
+            <li><i class="pi pi-check"></i> Keyless entry and go</li>
+            <li><i class="pi pi-check"></i> Multifunction steering wheel</li>
+          </ul>
         </div>
-        <div class="p-col-12 p-md-6 p-lg-4">
+        <div class="p-col-12 p-md-4">
+          <ul class="car-details-list">
+            <li>
+              <i class="pi pi-check"></i> Power-adjustable front seats with
+              memory function
+            </li>
+            <li><i class="pi pi-check"></i> Power-folding side mirrors</li>
+            <li><i class="pi pi-check"></i> Rain-sensing windshield wipers</li>
+            <li><i class="pi pi-check"></i> Rearview camera</li>
+          </ul>
+        </div>
+        <div class="p-col-12 p-md-4">
+          <ul class="car-details-list">
+            <li><i class="pi pi-check"></i> Remote engine start</li>
+            <li><i class="pi pi-check"></i> Sunroof/moonroof</li>
+            <li><i class="pi pi-check"></i> Touchpad controller</li>
+            <li><i class="pi pi-check"></i> Wireless device charging</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="p-col-12 p-md-6 p-lg-4">
+    <img
+      class="car-comfort"
+      src="https://www.mercedes-benz.si/passengercars/mercedes-benz-cars/models/eqa/explore/equipment/_jcr_content/par/productinfotextimage/media2/slides/videoimageslide/image.MQ6.7.20220628074822.jpeg"
+      alt="Power"
+    />
+  </div>
+</div>
 
-              <img class="car-comfort" src="https://www.mercedes-benz.si/passengercars/mercedes-benz-cars/models/eqa/explore/equipment/_jcr_content/par/productinfotextimage/media2/slides/videoimageslide/image.MQ6.7.20220628074822.jpeg" alt="Power" />
-            </div>
-          </div>
-      
-      
