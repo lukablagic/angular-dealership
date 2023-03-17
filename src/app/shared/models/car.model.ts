@@ -1,9 +1,10 @@
+import { SafeUrl } from "@angular/platform-browser";
 import { Equipment } from "./equipment.model";
 
 export class Car extends Equipment {
   id?: string;
   model?: string;
-  image?: string;
+  image?: SafeUrl;
   price?: number;
   year?: number;
   mileage?: number;

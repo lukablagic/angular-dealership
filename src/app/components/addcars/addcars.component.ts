@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Form } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { CarsAPIService } from 'src/app/services/cars-api.service';
 import { CarFormComponent } from 'src/app/shared/components/car-form/car-form.component';
 import { Car } from 'src/app/shared/models/car.model';
@@ -16,7 +17,7 @@ export class AddcarsComponent {
   car: Car = new Car();
   display: boolean = false;
   equipment: Equipment;
-constructor(private carApi: CarsAPIService) {
+constructor(private carApi: CarsAPIService,private sanitizer: DomSanitizer) {
   this.equipment = new Equipment(false, false, false, false, false, false, false, false);
 }
   showDialog() {
@@ -29,5 +30,12 @@ constructor(private carApi: CarsAPIService) {
   }
   addCar() {
   this.carApi.addCar(this.car);
+  }
+   getCarImage(car:Car)  {
+     this.carApi.getCarImage(car).subscribe((data:any) => {
+    this.car.image = data.url;
+    console.log(data.url);
+  });
+ 
   }
 }

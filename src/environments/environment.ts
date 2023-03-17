@@ -25,7 +25,7 @@ export const environment = {
   },
   databaseURL: 'https://api.mercedes-benz.com/configurator/v1/markets/de_DE/models?classId=',
   apiKey: '&apikey=cccbf567-847b-4273-a7e9-940d86ce3195',
-  apiPicturesUrl: 'https://cdn.imagin.studio/getImage?customer=siferi'
+  apiPicturesUrl: 'https://cdn.imagin.studio/getImage?customer=siferi&make=mercedes&modelFamily='
 };
 // apibaseur + classtype + apikey 
 //&make=mercedes&modelFamily=a-class&modelRange=a-class&modelVariant=ch&modelYear=2019&powerTrain=fossil

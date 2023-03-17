@@ -7,10 +7,11 @@
     <div class="p-grid">
       <div class="p-col">
         <p-image
-          src="https://imgd.aeplcdn.com/0x0/n/cw/ec/48067/s-class-exterior-right-front-three-quarter-3.jpeg"
+          src="{{car.image}}"
           alt="Image"
           width="100%"
         ></p-image>
+        <p-button (click)="getCarImage(car)" icon="pi pi-external-link" class="dialog" label="Preview"></p-button>
       </div>
       <div class="p-col">
         <h2>Model</h2>

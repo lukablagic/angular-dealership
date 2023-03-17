@@ -16,6 +16,7 @@ import { Car } from '../shared/models/car.model';
 export class CarsAPIService {
   itemsCollection: AngularFirestoreCollection<any>;
   items: Observable<any[]>;
+  url: any;
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) {
     this.loadCars();
@@ -35,4 +36,20 @@ export class CarsAPIService {
   getCars() {
     return this.items;
   }
+  getCarImage(car: Car) {
+    car.model = car.model.replace(' ', '-');
+    try {
+      this.url = environment.apiPicturesUrl + car.model ;
+    } catch (error) {
+      console.log(error);
+    }
+    return this.http.get(this.url, { responseType: 'blob' }).pipe(
+      map((data) => {
+        return {
+          url: URL.createObjectURL(data),
+        };
+      })
+    );
+  }
+  
 }
