@@ -1,27 +1,27 @@
 [
     {
         "bodyId": "KOMPAKT-LIMOUSINE",
-        "bodyName": "C Class",
+        "bodyName": "BMW 3 Series 320d",
         "description": "From 3000 € / month",
-        "image": "https://www.mercedes-benz.si/content/slovenia/sl/passengercars/_jcr_content/root/responsivegrid/simple_teaser_115569/simple_teaser_item_c_1316835789.component.damq6.3338866127877.jpg/home-teaser-Evo-mercedes-benz-akcijska-ponudba-c-class-40-10-2022.jpg"
+        "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/1-bmw-320d-2019-uk-fd-hero-front.jpg"
     },
     {
-        "bodyId": "A CLASS",
-        "bodyName": "A Class",
-       "description": "From 3000 € / month",
-        "image": "https://www.mercedes-benz.si/content/slovenia/sl/passengercars/_jcr_content/root/responsivegrid/simple_teaser_115569/simple_teaser_item_c_1811508592.component.damq6.3347566006852.jpg/mercedes-benz-a-class-w177-exterior-paintfinish-04-3302x1858-08-2022.jpg"
+        "bodyId": "Range Rover Evoque",
+        "bodyName": "Golf 7",
+       "description": "From 200 € / month",
+        "image": "https://gcdn.polovniautomobili.com/user-images/thumbs/2104/21041588/fed85348b79d-800x600.jpg"
 
     },
     {
         "bodyId": "COUPE",
-        "bodyName": "B Class",
-        "description": "From 3000 € / month",
-        "image": "https://www.mercedes-benz.si/content/slovenia/sl/passengercars/_jcr_content/root/responsivegrid/simple_teaser_115569/simple_teaser_item_c_177510770.component.damq6.3345600305110.jpg/mercedes-benz-compactcars-landingpage-models-b-class-w247-2730x1536-08-2022.jpg"
+        "bodyName": "Range Rover Evoque",
+        "description": "From 320 € / month",
+        "image": "https://images.prismic.io/carwow/b61c3a0f-e510-4bd2-849c-b7ffc879641f_Front+%C2%BE+moving.jpg"
  
     },
     {
         "bodyId": "GLA",
-        "bodyName": "GLA Class",
+        "bodyName": "Mercedes GLA",
         "description": "From 3000 € / month",
         "image": "https://www.mercedes-benz.si/content/slovenia/sl/passengercars/_jcr_content/root/responsivegrid/simple_teaser_115569/simple_teaser_item_c_1360853029.component.damq6.3346365707206.jpg/stage-mercedes-benz-akcijska-ponudba-GLA-01-2023-2556x852.jpg"
       

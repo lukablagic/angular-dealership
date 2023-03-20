@@ -1,23 +1,12 @@
 <p-menubar [model]="items">
     <div>
-        <input type="text" pInputText placeholder="Search" >
         <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" placeholder="" optionLabel="name"></p-dropdown>
         <button type="button" pButton label="Login" icon="" style="margin-left:.5em"></button>
+        <button pButton pRipple type="button" icon="pi pi-fw pi-shopping-cart"   (click)="visibleSidebar1 = true" class="p-button-text p-button-plain"></button>
     </div>
 </p-menubar>
-<p-sidebar  [(visible)]="visibleSidebar1" [baseZIndex]="10000" >
-    <h1 style="font-weight:normal">Models</h1>
+<p-sidebar  [(visible)]="visibleSidebar1" [baseZIndex]="10000" position="right" >
+    <h1 style="font-weight:normal">Cart</h1>
     <p-panelMenu [model]="itemsModles" [style]="{'width':'300px'}"></p-panelMenu>
 </p-sidebar>
-<p-sidebar  [(visible)]="visibleSidebar2" [baseZIndex]="10000" >
-    <h1 style="font-weight:normal">Search and Buy</h1>
-    <p-panelMenu [model]="itemsSearch" [style]="{'width':'300px'}"></p-panelMenu>
-</p-sidebar>
-<p-sidebar  [(visible)]="visibleSidebar3" [baseZIndex]="10000" >
-    <h1 style="font-weight:normal">Inovations</h1>
-    <p-panelMenu [model]="itemsInovations" [style]="{'width':'300px'}"></p-panelMenu>
-</p-sidebar>
-<p-sidebar  [(visible)]="visibleSidebar4" [baseZIndex]="10000" >
-    <h1 style="font-weight:normal">Service</h1>
-    <p-panelMenu [model]="itemsService" [style]="{'width':'300px'}"></p-panelMenu>
-</p-sidebar>
+
