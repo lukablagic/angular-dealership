@@ -1,6 +1,8 @@
 
-<div class="p-grid ">
-  <div class="p-col-2">
+<div class="p-grid p-shadow-1 ">
+  <div class="p-col-3 ">
+  </div>
+  <div class="p-col-2 " >
     <h2>Models</h2>
     <p-dropdown
       [options]="models"
@@ -19,21 +21,14 @@
       (click)="sendCarData(car)"
       optionLabel="label"
     ></p-dropdown>
-    <h2>Mileage</h2>
-    <p-dropdown
-      [options]="mileageRange"
-      [(ngModel)]="selectedMileage"
-      placeholder="Select Mileage"
-      (click)="sendCarData(car)"
-      optionLabel="label"
-    ></p-dropdown>
+
   </div>
   <div class="p-col-2">
     <h2>Transmission</h2>
     <p-dropdown
-      [options]="mileageRange"
-      [(ngModel)]="selectedMileage"
-      placeholder="Select a Model"
+      [options]="transmissionRange"
+      [(ngModel)]="selectedTransmissionRange"
+      placeholder="Select Transmission"
       (click)="sendCarData(car)"
       optionLabel="label"
     ></p-dropdown>
@@ -45,7 +40,9 @@
       (click)="sendCarData(car)"
       optionLabel="label"
     ></p-dropdown>
-    <h2>Engine Type</h2>
+  </div>
+  <div class="p-col-2">
+    <h2>Fuel Type</h2>
     <p-dropdown
       [options]="fuelRange"
       [(ngModel)]="selectedFuelRange"
@@ -53,90 +50,13 @@
       (click)="sendCarData(car)"
       optionLabel="label"
     ></p-dropdown>
-  </div>
-  <div class="p-col">
-    <h2>Car Features</h2>
-    <div class="field-checkbox">
-      <p-checkbox
-        name="group1"
-        [binary]="true"
-        (click)="sendCarData(car)"
-        [(ngModel)]="airConditioning"
-        inputId="ny"
-      ></p-checkbox>
-      <label for="ny">Air Contitioning</label>
-    </div>
-    <div class="field-checkbox">
-      <p-checkbox
-        name="group1"
-        [binary]="true"
-        (ngModelChange)="sendCarData(car)"
-        [(ngModel)]="cruiseControl"
-        inputId="ny"
-      ></p-checkbox>
-      <label for="ny">Cruise Control</label>
-    </div>
-
-    <div class="field-checkbox">
-      <p-checkbox
-        name="group1"
-        [binary]="true"
-        (click)="sendCarData(car)"
-        [(ngModel)]="parkingSensors"
-        inputId="ny"
-      ></p-checkbox>
-      <label for="ny">Parking Sensors</label>
-    </div>
-    <div class="field-checkbox">
-      <p-checkbox
-        name="group1"
-        [binary]="true"
-        (click)="sendCarData(car)"
-        [(ngModel)]="powerSteering"
-        inputId="ny"
-      ></p-checkbox>
-      <label for="ny">Power Steering</label>
-    </div>
-    <div class="field-checkbox">
-      <p-checkbox
-        name="group1"
-        [binary]="true"
-        (click)="sendCarData(car)"
-        [(ngModel)]="powerWindows"
-        inputId="ny"
-      ></p-checkbox>
-      <label for="ny">Power Windows</label>
-    </div>
-    <div class="field-checkbox">
-      <p-checkbox
-        name="group1"
-        [binary]="true"
-        (click)="sendCarData(car)"
-        [(ngModel)]="powerMirrors"
-        inputId="ny"
-      ></p-checkbox>
-      <label for="ny">Power Mirror</label>
-    </div>
-    <div class="field-checkbox">
-      <p-checkbox
-        name="group1"
-        [binary]="true"
-        (click)="sendCarData(car)"
-        [(ngModel)]="ABS"
-        inputId="ny"
-      ></p-checkbox>
-      <label for="ny">ABS</label>
-    </div>
-    <div class="field-checkbox">
-      <p-checkbox
-        name="group1"
-        [binary]="true"
-        (click)="sendCarData(car)"
-        [(ngModel)]="airbags"
-        inputId="ny"
-      ></p-checkbox>
-      <label for="ny">Air Bags</label>
-    </div>
-    <p-button label="Search" icon="pi pi-search"></p-button>
-  </div>
+  <h2>Mileage</h2>
+  <p-dropdown
+    [options]="mileageRange"
+    [(ngModel)]="selectedMileage"
+    placeholder="Select Mileage"
+    (click)="sendCarData(car)"
+    optionLabel="label"
+  ></p-dropdown>
+</div>
 </div>
