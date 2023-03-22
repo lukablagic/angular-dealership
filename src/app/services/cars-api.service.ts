@@ -9,6 +9,7 @@ import {
 } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
 import { Car } from '../shared/models/car.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,7 @@ export class CarsAPIService {
   items: Observable<any[]>;
   url: any;
 
-  constructor(private http: HttpClient, private firestore: AngularFirestore) {
+  constructor(private http: HttpClient, private firestore: AngularFirestore,private sanitizer: DomSanitizer,) {
     this.loadCars();
   }
   addCar(car: Car) {
@@ -38,18 +39,15 @@ export class CarsAPIService {
   }
   getCarImage(car: Car) {
     car.model = car.model.replace(' ', '-');
-    try {
-      this.url = environment.apiPicturesUrl + car.model ;
-    } catch (error) {
-      console.log(error);
-    }
+    this.url = environment.apiPicturesUrl + car.model;
     return this.http.get(this.url, { responseType: 'blob' }).pipe(
-      map((data) => {
-        return {
-          url: URL.createObjectURL(data),
-        };
+      map((blob: Blob) => {
+        const urlCreator = window.URL || window.webkitURL;
+        const imageUrl = urlCreator.createObjectURL(blob);
+        return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
       })
     );
   }
+  
   
 }

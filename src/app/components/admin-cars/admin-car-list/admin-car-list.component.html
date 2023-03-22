@@ -1,9 +1,9 @@
 <ng-container>
     <h1>Vehicles</h1>
-    <div class="p-card">
-      <div class="p-grid">
+    <div class="card">
+      <div class="grid">
         <ng-container *ngFor="let item of cars">
-          <app-admin-car-item [car]="item" class="d-flex justify-content-center p-col">
+          <app-admin-car-item [car]="item" class="d-flex justify-content-center col">
           </app-admin-car-item>
         </ng-container>
       </div>

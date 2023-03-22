@@ -1,19 +1,19 @@
-<div class="p-grid">
+<div class="grid">
   <div class="col-3">
     <h1>Settings</h1>
 <app-car-form (carEventEmmiter)="setCar($event)"></app-car-form>
   </div>
-  <div class="p-col">
-    <div class="p-grid">
-      <div class="p-col">
+  <div class="col">
+    <div class="grid">
+      <div class="col">
         <p-image
-          src="{{car.image}}"
+          [src]="car.image"
           alt="Image"
           width="100%"
         ></p-image>
         <p-button (click)="getCarImage(car)" icon="pi pi-external-link" class="dialog" label="Preview"></p-button>
       </div>
-      <div class="p-col">
+      <div class="col">
         <h2>Model</h2>
         <h3>{{car.model}}</h3>
         <h2>Car Price</h2>
@@ -41,7 +41,7 @@
         </p-dialog>
       
       </div>
-      <div class="p-col">
+      <div class="col">
         <h2>Transmission</h2>
         <h3>{{car.transmission}}</h3>
         <h2>Year</h2>

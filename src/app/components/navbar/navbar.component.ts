@@ -29,9 +29,9 @@ export class NavbarComponent {
       { label: 'Best Cars', routerLink: ['/home']},
       { label: 'Search and Buy', icon: 'pi pi-fw pi-shopping-cart' ,routerLink: ['/search-buy']},
       { label: 'Service and Repair', icon: 'pi pi-fw pi-info', routerLink: ['/service'] },
-      { label: 'News and Rewiews', icon: 'pi pi-fw pi-info',routerLink: ['/news'] },
+      { label: 'News and Reviews', icon: 'pi pi-fw pi-info',routerLink: ['/news'] },
       { label: 'Sell your Car', icon: 'pi pi-fw pi-info',routerLink: ['/sell-car'] },
-      { label: 'Addd cars', icon: 'pi pi-fw pi-info',routerLink: ['/addcars'] },
+      { label: 'Add cars', icon: 'pi pi-fw pi-info',routerLink: ['/addcars'] },
     ];
     this.primengConfig.ripple = true;
     this.languages = [

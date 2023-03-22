@@ -1,8 +1,6 @@
-
-<div class="p-grid p-shadow-1 ">
-  <div class="p-col-3 ">
-  </div>
-  <div class="p-col-2 " >
+<div class="grid p-shadow-1">
+  
+  <div class="col-2">
     <h2>Models</h2>
     <p-dropdown
       [options]="models"
@@ -12,6 +10,8 @@
       (click)="sendCarData(car)"
       optionLabel="model"
     ></p-dropdown>
+  </div>
+  <div class="col-2">
     <h2>Car Price</h2>
     <p-dropdown
       [options]="priceRange"
@@ -21,9 +21,8 @@
       (click)="sendCarData(car)"
       optionLabel="label"
     ></p-dropdown>
-
   </div>
-  <div class="p-col-2">
+  <div class="col-2">
     <h2>Transmission</h2>
     <p-dropdown
       [options]="transmissionRange"
@@ -32,6 +31,8 @@
       (click)="sendCarData(car)"
       optionLabel="label"
     ></p-dropdown>
+  </div>
+  <div class="col-2">
     <h2>Year</h2>
     <p-dropdown
       [options]="yearRange"
@@ -41,7 +42,7 @@
       optionLabel="label"
     ></p-dropdown>
   </div>
-  <div class="p-col-2">
+  <div class="col-2">
     <h2>Fuel Type</h2>
     <p-dropdown
       [options]="fuelRange"
@@ -50,13 +51,15 @@
       (click)="sendCarData(car)"
       optionLabel="label"
     ></p-dropdown>
-  <h2>Mileage</h2>
-  <p-dropdown
-    [options]="mileageRange"
-    [(ngModel)]="selectedMileage"
-    placeholder="Select Mileage"
-    (click)="sendCarData(car)"
-    optionLabel="label"
-  ></p-dropdown>
-</div>
+  </div>
+  <div class="col-2">
+    <h2>Mileage</h2>
+    <p-dropdown
+      [options]="mileageRange"
+      [(ngModel)]="selectedMileage"
+      placeholder="Select Mileage"
+      (click)="sendCarData(car)"
+      optionLabel="label"
+    ></p-dropdown>
+  </div>
 </div>

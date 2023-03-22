@@ -27,15 +27,18 @@ constructor(private carApi: CarsAPIService,private sanitizer: DomSanitizer) {
   setCar(car: Car) {
     this.car = car;
     this.equipment = car.equipment;
+  // console.log(this.car.model);
   }
   addCar() {
   this.carApi.addCar(this.car);
   }
-   getCarImage(car:Car)  {
-     this.carApi.getCarImage(car).subscribe((data:any) => {
-    this.car.image = data.url;
-    console.log(data.url);
-  });
- 
+  getCarImage(car: Car) {
+    
+    this.carApi.getCarImage(car).subscribe((imageUrl: string) => {
+      this.car.image = imageUrl;
+    });
+    console.log(this.car.image)
   }
+  
+ 
 }
