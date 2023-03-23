@@ -19,15 +19,20 @@ export class CarsAPIService {
   items: Observable<any[]>;
   url: any;
 
-  constructor(private http: HttpClient, private firestore: AngularFirestore,private sanitizer: DomSanitizer,) {
+  constructor(
+    private http: HttpClient,
+    private firestore: AngularFirestore,
+    private sanitizer: DomSanitizer
+  ) {
     this.loadCars();
   }
   addCar(car: Car) {
-    this.firestore
-      .collection('/cars')
-      .add(car.toObject())
-      .then(() => console.log('Car added successfully'))
-      .catch((error) => console.log(error));
+      this.firestore
+        .collection('/cars')
+        .add(car.toObject())
+        .then(() => console.log('Car added successfully'))
+        .catch((error) => console.log(error));
+
   }
   loadCars() {
     this.itemsCollection = this.firestore.collection('cars');
@@ -48,6 +53,5 @@ export class CarsAPIService {
       })
     );
   }
-  
-  
+
 }

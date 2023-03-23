@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Form } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer,SafeUrl  } from '@angular/platform-browser';
 import { CarsAPIService } from 'src/app/services/cars-api.service';
 import { CarFormComponent } from 'src/app/shared/components/car-form/car-form.component';
 import { Car } from 'src/app/shared/models/car.model';
@@ -37,7 +37,7 @@ constructor(private carApi: CarsAPIService,private sanitizer: DomSanitizer) {
     this.carApi.getCarImage(car).subscribe((imageUrl: string) => {
       this.car.image = imageUrl;
     });
-    console.log(this.car.image)
+
   }
   
  

@@ -16,7 +16,6 @@ export class CarFormComponent {
     // carPrice: new FormControl('')
   });
   models: any[];
-  val2: number = 50;
   engines: String[];
   selectedModel: Car;
   carPrice: number;

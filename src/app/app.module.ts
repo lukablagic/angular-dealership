@@ -45,6 +45,7 @@ import { AdminCarListComponent } from './components/admin-cars/admin-car-list/ad
 import { AdminCarItemComponent } from './components/admin-cars/admin-car-list/admin-car-item/admin-car-item.component';
 import { FiltersComponent } from './shared/components/filters/filters.component';
 import { DetailedCarComponent } from './shared/components/detailed-car/detailed-car.component';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 //flex-layout
 
@@ -84,6 +85,7 @@ import { DetailedCarComponent } from './shared/components/detailed-car/detailed-
     AngularFireModule,
     ImageModule,
     GalleriaModule,
+    AngularFireStorageModule,
     DropdownModule,
     FormsModule,
     CarouselModule,
