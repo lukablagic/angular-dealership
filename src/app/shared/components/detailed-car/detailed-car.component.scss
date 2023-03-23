@@ -1,14 +1,18 @@
-.car-comfort {
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    height: 90%;
-  }
+
   .card-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+ 
+ font-size: 1.5rem;
+ font-family: "open sans", sans-serif;
+ font-weight: 600;
+ color: #646464;
+
+}
+h1,h3{
+  padding-left: 10%;
+  font-family: "open sans", sans-serif;
+  font-weight: 600;
+  color: #646464;
+  margin-bottom: 0;
 }
 
 .card-header img {

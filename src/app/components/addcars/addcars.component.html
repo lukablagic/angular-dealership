@@ -1,90 +1,47 @@
+<h1>Add a Car</h1>
 <div class="grid">
-  <div class="col-3">
-    <h1>Settings</h1>
-<app-car-form (carEventEmmiter)="setCar($event)"></app-car-form>
-  </div>
-  <div class="col">
-    <div class="grid">
-      <div class="col">
-        <p-image
-          [src]="car.image"
-          alt="Image"
-          width="100%"
-        ></p-image>
-        <p-button (click)="getCarImage(car)" icon="pi pi-external-link" class="dialog" label="getCarImage"></p-button>
-        <p-button (click)="getCarImage(car)" icon="pi pi-external-link" class="dialog" label="upload car image"></p-button>
-      </div>
-      <div class="col">
-        <h2>Model</h2>
-        <h3>{{car.model}}</h3>
-        <h2>Car Price</h2>
-        <h3>{{car.price}} €</h3>
-        <h2>Engine Size</h2>
-        <h3>{{car.engineSize}} cc</h3>
-        <h2>Mileage</h2>
-        <h3>{{car.mileage}}</h3>
-        <button
-          pButton
-          type="button"
-          lable="Success"
-          iconPos="left"
-          class="p-button-success"
-          (click)="addCar()"
-        >
-          Add
-        </button>
-        <p-button (click)="showDialog()" icon="pi pi-external-link" class="dialog" label="Preview"></p-button>
-        <p-dialog header="Header" [(visible)]="display" [style]="{width: '50vw'}">
+  <app-filters (carEventEmmiter)="setCar($event)"></app-filters>
 
-            <ng-template pTemplate="footer">
-                <p-button icon="pi pi-check" (click)="display=false" label="Ok"  styleClass="p-button-text"></p-button>
-            </ng-template>
-        </p-dialog>
+  <p-button (click)="showDialog()" icon="pi pi-external-link" class="pl-3" label="Freatures"></p-button>
+  <p-dialog header="Header" [(visible)]="display" [style]="{width: '50vw'}">
+      <div class="field-checkbox">
+          <p-checkbox name="group1" [binary]="true"  [(ngModel)]="equipment.airConditioning" inputId="ny"></p-checkbox>
+          <label for="ny" >Air Contitioning</label>
+      </div>
+      <div class="field-checkbox">
+          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.cruiseControl" inputId="ny"></p-checkbox>
+          <label for="ny" >Cruise Control</label>
+      </div>
       
+      <div class="field-checkbox">
+          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.parkingSensors" inputId="ny"></p-checkbox>
+          <label for="ny">Parking Sensors</label>
       </div>
-      <div class="col">
-        <h2>Transmission</h2>
-        <h3>{{car.transmission}}</h3>
-        <h2>Year</h2>
-        <h3>{{car.year}}</h3>
-        <h2>Engine Type</h2>
-        <h3>{{car.fuel}}</h3>
-        <h2>Car Features</h2>
-        <p-button (click)="showDialog()" icon="pi pi-external-link" class="dialog" label="Select"></p-button>
-        <p-dialog header="Header" [(visible)]="display" [style]="{width: '50vw'}">
-            <div class="field-checkbox">
-                <p  *ngIf="equipment.airConditioning" >Air Conditioning</p>
-            </div>
-            <div class="field-checkbox">
-                <p  *ngIf="equipment.cruiseControl" >Cruise Control</p>
-            </div>
-            
-            <div class="field-checkbox">
-                <p  *ngIf="equipment.parkingSensors">Parking Sensors</p>
-            </div>
-            <div class="field-checkbox">
-              <p  *ngIf="equipment.powerSteering" >Power Steering</p>
-            </div>
-            <div class="field-checkbox">
-                <p  *ngIf="equipment.powerWindows" >Power Windows</p>
-            </div>
-            <div class="field-checkbox">
-                <p  *ngIf="equipment.powerMirrors">Power Mirrors</p>
-            </div>
-            <div class="field-checkbox">
-                <p  *ngIf="equipment.ABS" >ABS</p>
-            </div>
-            <div class="field-checkbox">
-               <p  *ngIf="equipment.airbags" >Air Bags</p>
-            </div>
-            <ng-template pTemplate="footer">
-                <p-button icon="pi pi-check" (click)="display=false" label="Ok" styleClass="p-button-text"></p-button>
-            </ng-template>
-        </p-dialog>
+      <div class="field-checkbox">
+          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.powerSteering" inputId="ny"></p-checkbox>
+          <label for="ny">Power Steering</label>
       </div>
-    </div>
+      <div class="field-checkbox">
+          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.powerWindows" inputId="ny"></p-checkbox>
+          <label for="ny">Power Windows</label>
+      </div>
+      <div class="field-checkbox">
+          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.powerMirrors" inputId="ny"></p-checkbox>
+          <label for="ny">Power Mirror</label>
+      </div>
+      <div class="field-checkbox">
+          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.ABS" inputId="ny"></p-checkbox>
+          <label for="ny">ABS</label>
+      </div>
+      <div class="field-checkbox">
+          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.airbags" inputId="ny"></p-checkbox>
+          <label for="ny">Air Bags</label>
+      </div>
+      <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="display=false" label="Ok" styleClass="p-button-text"></p-button>
+      </ng-template>
+  </p-dialog>
+  <p-button class="pl-6" label="Add Car" styleClass="p-button-success" (click)="addCar()" ></p-button>
   </div>
-</div>
 <h1>Car List for Users</h1>
-<app-admin-cars></app-admin-cars>
-
+<!--<app-admin-cars></app-admin-cars>-->

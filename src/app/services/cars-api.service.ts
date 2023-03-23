@@ -15,8 +15,9 @@ import { DomSanitizer } from '@angular/platform-browser';
   providedIn: 'root',
 })
 export class CarsAPIService {
+  private dbCars = '/cars';
   itemsCollection: AngularFirestoreCollection<any>;
-  items: Observable<any[]>;
+  items: Observable<Car[]>;
   url: any;
 
   constructor(
@@ -24,26 +25,39 @@ export class CarsAPIService {
     private firestore: AngularFirestore,
     private sanitizer: DomSanitizer
   ) {
-    this.loadCars();
+    this.loadPayload();
   }
-  addCar(car: Car) {
-      this.firestore
-        .collection('/cars')
-        .add(car.toObject())
-        .then(() => console.log('Car added successfully'))
-        .catch((error) => console.log(error));
+  loadPayload() {
+    this.itemsCollection = this.firestore.collection(this.dbCars);
+    this.items = this.itemsCollection.snapshotChanges().pipe(
+      map((changes: any[]) => {
+        return changes.map((a) => ({
+          id: a.payload.doc.id,
+          ...a.payload.doc.data(),
+        }));
+      })
+    );
+    this.items.subscribe((data) => console.log(data));
+  }
 
-  }
-  loadCars() {
-    this.itemsCollection = this.firestore.collection('cars');
-    this.items = this.itemsCollection.valueChanges();
-  }
-
-  getCars() {
+  getAllCars() {
     return this.items;
   }
+  addCar(car: Car) {
+    this.firestore
+      .collection(this.dbCars)
+      .add(car)
+      .then(() => console.log('Car added successfully'))
+      .catch((error) => console.log(error));
+  }
+
+  removeCar(car: Car) {
+    this.firestore.collection(this.dbCars).doc(car.id).delete();
+  }
+
   getCarImage(car: Car) {
-    car.model = car.model.replace(' ', '-');
+    let model: string = car.model;
+    car.model = model;
     this.url = environment.apiPicturesUrl + car.model;
     return this.http.get(this.url, { responseType: 'blob' }).pipe(
       map((blob: Blob) => {
@@ -53,5 +67,4 @@ export class CarsAPIService {
       })
     );
   }
-
 }

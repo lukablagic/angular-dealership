@@ -1,65 +1,55 @@
 <div class="grid p-shadow-1">
-  
-  <div class="col-2">
-    <h2>Models</h2>
-    <p-dropdown
-      [options]="models"
-      [(ngModel)]="selectedModel"
-      [ngModelOptions]="{ standalone: true }"
-      placeholder="Select a Model"
-      (click)="sendCarData(car)"
-      optionLabel="model"
-    ></p-dropdown>
-  </div>
-  <div class="col-2">
-    <h2>Car Price</h2>
-    <p-dropdown
-      [options]="priceRange"
-      [(ngModel)]="selectedPriceRange"
-      [ngModelOptions]="{ standalone: true }"
-      placeholder="Select a Price"
-      (click)="sendCarData(car)"
-      optionLabel="label"
-    ></p-dropdown>
-  </div>
-  <div class="col-2">
-    <h2>Transmission</h2>
-    <p-dropdown
-      [options]="transmissionRange"
-      [(ngModel)]="selectedTransmissionRange"
-      placeholder="Select Transmission"
-      (click)="sendCarData(car)"
-      optionLabel="label"
-    ></p-dropdown>
-  </div>
-  <div class="col-2">
-    <h2>Year</h2>
-    <p-dropdown
-      [options]="yearRange"
-      [(ngModel)]="selectedYearRange"
-      placeholder="Select Year"
-      (click)="sendCarData(car)"
-      optionLabel="label"
-    ></p-dropdown>
-  </div>
-  <div class="col-2">
-    <h2>Fuel Type</h2>
-    <p-dropdown
-      [options]="fuelRange"
-      [(ngModel)]="selectedFuelRange"
-      placeholder="Select a Fuel"
-      (click)="sendCarData(car)"
-      optionLabel="label"
-    ></p-dropdown>
-  </div>
-  <div class="col-2">
-    <h2>Mileage</h2>
-    <p-dropdown
-      [options]="mileageRange"
-      [(ngModel)]="selectedMileage"
-      placeholder="Select Mileage"
-      (click)="sendCarData(car)"
-      optionLabel="label"
-    ></p-dropdown>
-  </div>
+  <p-dropdown
+    class="p-2"
+    [options]="carMake"
+    [(ngModel)]="selectedMake"
+    placeholder="Make"
+    (ngModelChange)="sendCarData(car)"
+    (onChange)="loadModels(selectedMake)"
+  ></p-dropdown>
+
+  <p-dropdown
+    class="p-2"
+    [options]="models"
+    [(ngModel)]="selectedModelRange"
+    [disabled]="!selectedMake"
+    placeholder="Model"
+    (click)="sendCarData(car)"
+  ></p-dropdown>
+  <p-dropdown
+    class="p-2"
+    [options]="priceRange"
+    [(ngModel)]="selectedPriceRange"
+    [ngModelOptions]="{ standalone: true }"
+    placeholder="Price"
+    (click)="sendCarData(car)"
+  ></p-dropdown>
+  <p-dropdown
+    class="p-2"
+    [options]="transmissionRange"
+    [(ngModel)]="selectedTransmissionRange"
+    placeholder="Transmission"
+    (click)="sendCarData(car)"
+  ></p-dropdown>
+  <p-dropdown
+    class="p-2"
+    [options]="yearRange"
+    [(ngModel)]="selectedYearRange"
+    placeholder="Year"
+    (click)="sendCarData(car)"
+  ></p-dropdown>
+  <p-dropdown
+    class="p-2"
+    [options]="fuelRange"
+    [(ngModel)]="selectedFuelRange"
+    placeholder="Fuel"
+    (click)="sendCarData(car)"
+  ></p-dropdown>
+  <p-dropdown
+    class="p-2"
+    [options]="mileageRange"
+    [(ngModel)]="selectedMileageRange"
+    placeholder="Mileage"
+    (click)="sendCarData(car)"
+  ></p-dropdown>
 </div>

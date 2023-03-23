@@ -6,7 +6,7 @@ import { Equipment } from '../../models/equipment.model';
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.scss']
+  styleUrls: ['./filters.component.scss'],
 })
 export class FiltersComponent {
   @Output() carEventEmmiter = new EventEmitter<Car>();
@@ -15,111 +15,120 @@ export class FiltersComponent {
     model: new FormControl(''),
     // carPrice: new FormControl('')
   });
+  carMake: string[] = ['Mercedes', 'BMW', 'Audi', 'Volkswagen', 'Ford'];
+  selectedMake: string;
   models: any[];
-  priceRange: any[]= [
-    { label: '5000', value: 5000 },
-    { label: '10000', value: 10000 },
-    { label: '15000', value: 15000 },
-    { label: '20000', value: 20000 },
-    { label: '25000', value: 25000 },
-    { label: '30000', value: 30000 },
-];
+  priceRange: number[] = [5000, 10000, 15000, 20000, 25000, 30000];
   selectedPriceRange: number;
-  mileageRange = [
-    { label: '50000', value: 50000 },
-    { label: '100000', value: 100000 },
-    { label: '150000', value: 150000 },
-    { label: '200000', value: 200000 },
-];
+  mileageRange = [50000, 100000, 150000, 200000];
   selectedMileageRange: number;
-  yearRange: any[] = [
-    { label: '2010', value: 2010 },
-    { label: '2011', value: 2011 },
-    { label: '2012', value: 2012 },
-    { label: '2013', value: 2013 },
-    { label: '2014', value: 2014 },
-    { label: '2015', value: 2015 },
-    { label: '2016', value: 2016 },
-    { label: '2017', value: 2017 },
-    { label: '2018', value: 2018 },
-    { label: '2019', value: 2019 },
-    { label: '2020', value: 2020 },
-];
-  selectedYearRange: number; 
-transmissionRange: any[] = [
-    { label: 'RWD', value: 'RWD' },
-    { label: 'FWD', value: 'FWD' },
-    { label: '4x4', value: '4x4' },
-];
+  yearRange: number[] = [
+    2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
+  ];
+  selectedYearRange: number;
+  transmissionRange: string[] = ['RWD', 'FWD', '4x4'];
   selectedTransmissionRange: string;
-  fuelRange: any[] = [
-    { label: 'Petrol', value: 'Petrol' },
-    { label: 'Diesel', value: 'Diesel' },
-    { label: 'Hybrid', value: 'Hybrid' },
-    { label: 'Electric', value: 'Electric' },
-];
-selectedFuelRange: string;
-  val2: number = 50;
-  engines: String[];
-  selectedModel: Car;
-  carYear: number;
-  carMileage: number;
-  carFuel: string;
-  carTransmission: string;
-  selectedMileage: number = 0;
-  engineSize: number;
-  engineSizeOptions: number[];
-  selectedEngine: number;
-  equipment: Equipment;
-  engineType: string;
-  car: Car;
+  fuelRange: string[] = ['Petrol', 'Diesel', 'Hybrid', 'Electric'];
+  selectedFuelRange: string;
+  selectedModelRange: string;
+  car: Car = new Car();
   display: boolean = false;
-  airConditioning: boolean;
-  cruiseControl: boolean;
-  parkingSensors: boolean;
-  powerSteering: boolean;
-  powerWindows: boolean;
-  powerMirrors: boolean;
-  ABS: boolean;
-  airbags: boolean;
-
 
   showDialog() {
-      this.display = true;
+    this.display = true;
   }
 
-
-  constructor() {
-    this.models = [
-      { model: 'S Class' },
-      { model: 'A Class' },
-      { model: 'E Class' },
-      { model: 'C Class' },
-      { model: 'B Class' },
-      { model: 'V Class' },
-      { model: 'GLA Class' },
-      { model: 'GLC Class' },
-      { model: 'GLE Class' },
-      { model: 'GLS Class' },
-      { model: 'G Class' },
-    ];
-
-    this.selectedModel = new Car();
-    this.car = new Car();
-  }
+  constructor() {}
 
   sendCarData(car: Car) {
-    this.car.model = this.selectedModel.model;
+    this.car.make = this.selectedMake;
+    this.car.model = this.selectedModelRange;
     this.car.price = this.selectedPriceRange;
-    this.car.year = this.carYear;
-    this.car.mileage = this.carMileage;
-    this.carMileage = this.selectedMileage;
-    this.car.fuel = this.carFuel;
-    this.car.transmission = this.carTransmission;
-    this.car.engineSize = this.selectedEngine;
-    this.equipment = new Equipment(this.airConditioning, this.cruiseControl, this.parkingSensors, this.powerSteering, this.powerWindows, this.powerMirrors, this.ABS, this.airbags);
-    this.car.equipment = this.equipment;
-    
-    this.carEventEmmiter.emit(car);
+    this.car.year = this.selectedYearRange;
+    this.car.mileage = this.selectedMileageRange;
+    this.car.fuel = this.selectedFuelRange;
+    this.car.transmission = this.selectedTransmissionRange;
+      this.carEventEmmiter.emit(car);
+  }
+
+  loadModels(make: string) {
+    switch (make) {
+      case 'Mercedes':
+        this.models = [
+          'A-Class',
+          'B-Class',
+          'C-Class',
+          'E-Class',
+          'S-Class',
+          'GLA-Class',
+          'GLC-Class',
+          'GLE-Class',
+          'G-Class',
+        ];
+        break;
+      case 'BMW':
+        this.models = [
+          '1-Series',
+          '2-Series',
+          '3-Series',
+          '4-Series',
+          '5-Series',
+          '6-Series',
+          '7-Series',
+          'X1',
+          'X2',
+          'X3',
+          'X4',
+          'X5',
+          'X6',
+          'X7',
+          'Z4',
+        ];
+        break;
+      case 'Audi':
+        this.models = [
+          'A1',
+          'A2',
+          'A3',
+          'A4',
+          'A5',
+          'A6',
+          'A7',
+          'A8',
+          'Q2',
+          'Q3',
+          'Q5',
+          'Q7',
+          'Q8',
+          'R8',
+        ];
+        break;
+      case 'Volkswagen':
+        this.models = [
+          'Arteon',
+          'Beetle',
+          'Bora',
+          'Caddy',
+          'CC',
+          'Corrado',
+          'Eos',
+          'Golf',
+        ];
+        break;
+      case 'Ford':
+        this.models = [
+          'B-Max',
+          'C-Max',
+          'EcoSport',
+          'Edge',
+          'Escape',
+          'Fiesta',
+          'Focus',
+          'Galaxy',
+          'Grand C-Max',
+          'Kuga',
+        ];
+        break;
+    }
   }
 }

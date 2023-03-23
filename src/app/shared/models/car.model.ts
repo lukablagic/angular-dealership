@@ -1,8 +1,10 @@
 import { SafeUrl } from "@angular/platform-browser";
 import { Equipment } from "./equipment.model";
 
-export class Car extends Equipment {
+export class Car  {
+ 
   id?: string;
+  make?: string;
   model?: string;
   image?: SafeUrl;
   price?: number;
@@ -14,19 +16,22 @@ export class Car extends Equipment {
   equipment?: Equipment;
 
   constructor() {
-    super(false, false, false, false, false, false, false, false);
-    this.model = '';
+    
+    this.model = 'Enter model';
     this.price = 0;
     this.year = 0;
     this.mileage = 0;
     this.fuel = 'Diesel';
     this.transmission = 'RWD';
     this.engineSize = 0;
-    this.image = 'https://imgd.aeplcdn.com/0x0/n/cw/ec/48067/s-class-exterior-right-front-three-quarter-3.jpeg';
+    this.image = 'https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg';
   }
-
-  toObject(): any {
+  setEqipment(equipment: Equipment) {
+    this.equipment = equipment;
+  }
+  toObject() {
     return {
+      make: this.make,
       model: this.model,
       image: this.image,
       price: this.price,
@@ -35,16 +40,8 @@ export class Car extends Equipment {
       fuel: this.fuel,
       transmission: this.transmission,
       engineSize: this.engineSize,
-      equipment: {
-        airConditioning: this.airConditioning,
-        cruiseControl: this.cruiseControl,
-        parkingSensors: this.parkingSensors,
-        powerSteering: this.powerSteering,
-        powerWindows: this.powerWindows,
-        powerMirrors: this.powerMirrors,
-        ABS: this.ABS,
-        airbags: this.airbags,
-      },
+      equipment: this.equipment.toObject(),
     };
   }
+ 
 }

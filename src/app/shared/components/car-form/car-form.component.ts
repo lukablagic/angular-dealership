@@ -74,7 +74,7 @@ export class CarFormComponent {
     this.car.fuel = this.carFuel;
     this.car.transmission = this.carTransmission;
     this.car.engineSize = this.selectedEngine;
-    this.equipment = new Equipment(this.airConditioning, this.cruiseControl, this.parkingSensors, this.powerSteering, this.powerWindows, this.powerMirrors, this.ABS, this.airbags);
+    this.equipment = new Equipment();
     this.car.equipment = this.equipment;
     
     this.carEventEmmiter.emit(car);

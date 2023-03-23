@@ -1,11 +1,11 @@
-<div class="p-grid">
-  <div class="p-col-12 p-md-6 p-lg-7">
-    <div class="p-card p-shadow-2">
-      <div class="p-card-header">
+<div class="grid">
+  <div class="col-6 p-md-6 p-lg-7">
+    <div class="card p-shadow-2">
+      <div class="card-header">
         <h2>Mercedes-Benz {{ car.model }}</h2>
         <h3>Electric Intelligence</h3>
       </div>
-      <div class="p-card-body">
+      <div class="card-body">
         <div class="car-details">
           <ul>
             <li><strong>Model:</strong> {{ car.model }}</li>
@@ -18,20 +18,20 @@
       </div>
     </div>
   </div>
-  <div class="p-col-12 p-md-6 p-lg-5">
-    <div class="p-card p-shadow-2">
-      <div class="p-card-header">
+  <div class="col-6 p-md-6 p-lg-5">
+    <div class="card p-shadow-2">
+      <div class="card-header">
         <h2>Overview</h2>
       </div>
-      <img class="car" src="https://imgd.aeplcdn.com/0x0/n/cw/ec/48067/s-class-exterior-right-front-three-quarter-3.jpeg" alt="selected car image">
+      <img class="car" [src]="car.image" alt="car image">
     </div>
   </div>
-  <div class="p-grid">
-    <div class="p-col-12 p-md-4">
+  <div class="grid">
+    <div class="col-4 p-md-4">
       <div class="card">
         <div class="card-header">
           <img
-            src="https://resources.formula-e.pulselive.com/photo-resources/2022/11/08/bf42470c-4b6a-4ee3-8b3b-2b569df82759/kU1f4k7U.jpg?width=1440&height=810"
+            [src]="car.image"
             alt="Power"
           />
         </div>
@@ -54,11 +54,11 @@
       </div>
     </div>
 
-    <div class="p-col-12 p-md-4">
+    <div class="col-4 p-md-4">
       <div class="card">
         <div class="card-header">
           <img
-            src="https://www.mercedes-benz.co.uk/passengercars/mercedes-benz-cars/electric-vehicles/electric-car-range/bev-range/_jcr_content/swipeableteaserbox/par/swipeableteaser_copy/asset.MQ6.12.20210121120929.jpeg"
+            [src]="car.image"
             alt="Emissions"
           />
         </div>
@@ -73,12 +73,12 @@
       </div>
     </div>
 
-    <div class="p-col-12 p-md-4">
+    <div class="col-4 p-md-4">
       <div class="card">
         <div class="card-header">
           <img
-            src="https://www.wemeanbusinesscoalition.org/wp-content/uploads/2019/05/19C0393_001-1.jpg"
-            alt="Charging"
+            [src]="car.image"
+            alt="car image"
           />
         </div>
         <div class="card-body">
@@ -101,12 +101,12 @@
   </div>
 </div>
 
-<div class="p-grid">
-  <div class="p-col-12 p-md-6 p-lg-8">
+<div class="grid">
+  <div class="col-12 ">
     <div class="card">
       <h3>Comfort and Convenience</h3>
-      <div class="p-grid p-nogutter">
-        <div class="p-col-12 p-md-4">
+      <div class="grid p-nogutter">
+        <div class="col-4 p-md-4">
           <ul class="car-details-list">
             <li><i class="pi pi-check"></i> Ambient lighting</li>
             <li>
@@ -116,7 +116,7 @@
             <li><i class="pi pi-check"></i> Multifunction steering wheel</li>
           </ul>
         </div>
-        <div class="p-col-12 p-md-4">
+        <div class="col-4 p-md-4 p-s-6">
           <ul class="car-details-list">
             <li>
               <i class="pi pi-check"></i> Power-adjustable front seats with
@@ -127,7 +127,7 @@
             <li><i class="pi pi-check"></i> Rearview camera</li>
           </ul>
         </div>
-        <div class="p-col-12 p-md-4">
+        <div class="col-4 p-md-4">
           <ul class="car-details-list">
             <li><i class="pi pi-check"></i> Remote engine start</li>
             <li><i class="pi pi-check"></i> Sunroof/moonroof</li>
@@ -138,10 +138,10 @@
       </div>
     </div>
   </div>
-  <div class="p-col-12 p-md-6 p-lg-4">
+  <div class="col-12 ">
     <img
-      class="car-comfort"
-      src="https://www.mercedes-benz.si/passengercars/mercedes-benz-cars/models/eqa/explore/equipment/_jcr_content/par/productinfotextimage/media2/slides/videoimageslide/image.MQ6.7.20220628074822.jpeg"
+      class="car"
+      [src]="car.image"
       alt="Power"
     />
   </div>

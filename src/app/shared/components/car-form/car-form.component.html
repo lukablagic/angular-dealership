@@ -4,16 +4,15 @@
       <p-dropdown
         [options]="models"
         [(ngModel)]="selectedModel"
-        [ngModelOptions]="{ standalone: true }"
         placeholder="Select a Model"
         (click)="sendCarData(car)"
+        (ngModelChange)="sendCarData(car)"
         optionLabel="model"
       ></p-dropdown>
       <h2>Car Price</h2>
       <input
         type="text"
         pInputText
-        [ngModelOptions]="{ standalone: true }"
         [(ngModel)]="carPrice"
         (ngModelChange)="sendCarData(car)"
       />
@@ -21,7 +20,6 @@
       <input
         type="text"
         pInputText
-        [ngModelOptions]="{ standalone: true }"
         [(ngModel)]="selectedEngine"
         (ngModelChange)="sendCarData(car)"
       />
@@ -34,7 +32,7 @@
     />
     
   </div>
-  <div class="p-col">
+  <div class="col">
     <h2>Transmission</h2>
     <input
       type="text"

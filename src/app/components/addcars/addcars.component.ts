@@ -17,23 +17,25 @@ export class AddcarsComponent {
   car: Car = new Car();
   display: boolean = false;
   equipment: Equipment;
+
 constructor(private carApi: CarsAPIService,private sanitizer: DomSanitizer) {
-  this.equipment = new Equipment(false, false, false, false, false, false, false, false);
+  this.equipment = new Equipment();
 }
   showDialog() {
     this.display = true;
   }
 
+
+
   setCar(car: Car) {
     this.car = car;
-    this.equipment = car.equipment;
-  // console.log(this.car.model);
+    this.car.setEqipment(this.equipment);
   }
   addCar() {
-  this.carApi.addCar(this.car);
-  }
+    console.log(this.car)  
+    this.carApi.addCar(this.car);
+}
   getCarImage(car: Car) {
-    
     this.carApi.getCarImage(car).subscribe((imageUrl: string) => {
       this.car.image = imageUrl;
     });

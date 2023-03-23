@@ -23,8 +23,13 @@ ngOnInit() {
 }
 
 loadCars() {
-  this.api.getCars().subscribe(data => {
-  this.cars = data;
+  this.api.getAllCars().subscribe((data: Car[]) => {
+    this.cars = data;
+    this.cars.forEach((car) => {
+      this.api.getCarImage(car).subscribe((image) => {
+        car.image = image;
+      });
+    });
   });
 }
 
