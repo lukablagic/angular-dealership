@@ -14,6 +14,7 @@ export class AdminCarListComponent {
 
   ngOnInit() {
     this.loadCars();
+    
   }
 
   loadCars() {

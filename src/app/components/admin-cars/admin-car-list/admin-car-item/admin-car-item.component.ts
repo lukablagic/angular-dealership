@@ -13,6 +13,7 @@ export class AdminCarItemComponent {
   visible: boolean;
   constructor(private api: CarsAPIService) {}
   ngOnInit() {}
+  
   removeCar() {
     this.api.removeCar(this.car);
   }

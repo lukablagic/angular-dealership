@@ -46,7 +46,7 @@ import { AdminCarItemComponent } from './components/admin-cars/admin-car-list/ad
 import { FiltersComponent } from './shared/components/filters/filters.component';
 import { DetailedCarComponent } from './shared/components/detailed-car/detailed-car.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 //flex-layout
 
 
@@ -81,6 +81,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     InputTextModule,
     DialogModule,
     CardModule,
+    OverlayPanelModule,
     SliderModule,
     AngularFireModule,
     ImageModule,

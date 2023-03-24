@@ -10,6 +10,7 @@ import {
 import { environment } from 'src/environments/environment';
 import { Car } from '../shared/models/car.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PaintCombinations, PaintData } from '../shared/models/paint.model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,7 @@ export class CarsAPIService {
   itemsCollection: AngularFirestoreCollection<any>;
   items: Observable<Car[]>;
   url: any;
+ colors: PaintCombinations;
 
   constructor(
     private http: HttpClient,
@@ -46,7 +48,7 @@ export class CarsAPIService {
   addCar(car: Car) {
     this.firestore
       .collection(this.dbCars)
-      .add(car)
+      .add(car.toObject())
       .then(() => console.log('Car added successfully'))
       .catch((error) => console.log(error));
   }
@@ -54,11 +56,43 @@ export class CarsAPIService {
   removeCar(car: Car) {
     this.firestore.collection(this.dbCars).doc(car.id).delete();
   }
-
+  getColors(car: Car) {
+    let url: string = environment.paintsURL + '&make=' + car.make;
+    this.http.get(url).subscribe((data: PaintData) => {
+      this.colors =  data.paintCombinations;
+    });
+    return this.colors;
+  }
   getCarImage(car: Car) {
     let model: string = car.model;
     car.model = model;
-    this.url = environment.apiPicturesUrl + car.model;
+    this.url =
+      environment.apiBaseURL +
+      '&make=' +
+      car.make +
+      '&modelFamily=' +
+      car.model +
+      '&paintId=' +
+      car.paintId;
+    return this.http.get(this.url, { responseType: 'blob' }).pipe(
+      map((blob: Blob) => {
+        const urlCreator = window.URL || window.webkitURL;
+        const imageUrl = urlCreator.createObjectURL(blob);
+        return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+      })
+    );
+  }
+  getCarImageAngel(car: Car,view: string) {
+    let model: string = car.model;
+    car.model = model;
+    this.url =
+      environment.apiBaseURL +
+      '&make=' +
+      car.make +
+      '&modelFamily=' +
+      car.model +
+      '&paintId=' +
+      car.paintId + '&angel=' + view;
     return this.http.get(this.url, { responseType: 'blob' }).pipe(
       map((blob: Blob) => {
         const urlCreator = window.URL || window.webkitURL;

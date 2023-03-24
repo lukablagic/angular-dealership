@@ -23,12 +23,13 @@ export const environment = {
     appId: "1:183764172832:web:28ca5ba4865d566dd27c45",
     measurementId: "G-TRNT9SVHW4"
   },
-  databaseURL: 'https://api.mercedes-benz.com/configurator/v1/markets/de_DE/models?classId=',
-  apiKey: '&apikey=cccbf567-847b-4273-a7e9-940d86ce3195',
+  apiBaseURL: 'https://cdn.imagin.studio/getImage?customer=siferi',
+  paintsURL: 'https://cdn.imagin.studio/getPaints?customer=siferi&target=make',
   apiPicturesUrl: 'https://cdn.imagin.studio/getImage?customer=siferi&make=mercedes&modelFamily='
 };
 // apibaseur + classtype + apikey 
 //&make=mercedes&modelFamily=a-class&modelRange=a-class&modelVariant=ch&modelYear=2019&powerTrain=fossil
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

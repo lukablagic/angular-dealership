@@ -2,46 +2,122 @@
 <div class="grid">
   <app-filters (carEventEmmiter)="setCar($event)"></app-filters>
 
-  <p-button (click)="showDialog()" icon="pi pi-external-link" class="pl-3" label="Freatures"></p-button>
-  <p-dialog header="Header" [(visible)]="display" [style]="{width: '50vw'}">
-      <div class="field-checkbox">
-          <p-checkbox name="group1" [binary]="true"  [(ngModel)]="equipment.airConditioning" inputId="ny"></p-checkbox>
-          <label for="ny" >Air Contitioning</label>
-      </div>
-      <div class="field-checkbox">
-          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.cruiseControl" inputId="ny"></p-checkbox>
-          <label for="ny" >Cruise Control</label>
-      </div>
-      
-      <div class="field-checkbox">
-          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.parkingSensors" inputId="ny"></p-checkbox>
-          <label for="ny">Parking Sensors</label>
-      </div>
-      <div class="field-checkbox">
-          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.powerSteering" inputId="ny"></p-checkbox>
-          <label for="ny">Power Steering</label>
-      </div>
-      <div class="field-checkbox">
-          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.powerWindows" inputId="ny"></p-checkbox>
-          <label for="ny">Power Windows</label>
-      </div>
-      <div class="field-checkbox">
-          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.powerMirrors" inputId="ny"></p-checkbox>
-          <label for="ny">Power Mirror</label>
-      </div>
-      <div class="field-checkbox">
-          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.ABS" inputId="ny"></p-checkbox>
-          <label for="ny">ABS</label>
-      </div>
-      <div class="field-checkbox">
-          <p-checkbox name="group1" [binary]="true" [(ngModel)]="equipment.airbags" inputId="ny"></p-checkbox>
-          <label for="ny">Air Bags</label>
-      </div>
-      <ng-template pTemplate="footer">
-          <p-button icon="pi pi-check" (click)="display=false" label="Ok" styleClass="p-button-text"></p-button>
-      </ng-template>
+  <p-button
+    (click)="showDialog()"
+    icon="pi pi-external-link"
+    class="pl-3"
+    label="Freatures"
+  ></p-button>
+  <p-dialog header="Features" [(visible)]="display" [style]="{ width: '50vw' }">
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        [binary]="true"
+        [(ngModel)]="equipment.airConditioning"
+        inputId="ny"
+      ></p-checkbox>
+      <label for="ny">Air Contitioning</label>
+    </div>
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        [binary]="true"
+        [(ngModel)]="equipment.cruiseControl"
+        inputId="ny"
+      ></p-checkbox>
+      <label for="ny">Cruise Control</label>
+    </div>
+
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        [binary]="true"
+        [(ngModel)]="equipment.parkingSensors"
+        inputId="ny"
+      ></p-checkbox>
+      <label for="ny">Parking Sensors</label>
+    </div>
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        [binary]="true"
+        [(ngModel)]="equipment.powerSteering"
+        inputId="ny"
+      ></p-checkbox>
+      <label for="ny">Power Steering</label>
+    </div>
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        [binary]="true"
+        [(ngModel)]="equipment.powerWindows"
+        inputId="ny"
+      ></p-checkbox>
+      <label for="ny">Power Windows</label>
+    </div>
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        [binary]="true"
+        [(ngModel)]="equipment.powerMirrors"
+        inputId="ny"
+      ></p-checkbox>
+      <label for="ny">Power Mirror</label>
+    </div>
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        [binary]="true"
+        [(ngModel)]="equipment.ABS"
+        inputId="ny"
+      ></p-checkbox>
+      <label for="ny">ABS</label>
+    </div>
+    <div class="field-checkbox">
+      <p-checkbox
+        name="group1"
+        [binary]="true"
+        [(ngModel)]="equipment.airbags"
+        inputId="ny"
+      ></p-checkbox>
+      <label for="ny">Air Bags</label>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button
+        icon="pi pi-check"
+        (click)="display = false"
+        label="Ok"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template>
   </p-dialog>
-  <p-button class="pl-6" label="Add Car" styleClass="p-button-success" (click)="addCar()" ></p-button>
-  </div>
+  <p-overlayPanel #op>
+    <ng-template pTemplate="content">
+      <span class="p-buttonset">
+        <div *ngFor="let color of colors">
+          <button
+            pButton
+            pRipple
+            label="    "
+            [ngStyle]="{'background-color': color.hex}"
+            (click)="setColor(color)"
+          ></button>
+        </div>
+      </span>
+    </ng-template>
+  </p-overlayPanel>
+  <p-button
+    class="pl-3"
+    (click)="op.toggle($event)"
+    icon="pi pi-image"
+    label="Pick a Color"
+  ></p-button>
+  <p-button
+    class="pl-6"
+    label="Add Car"
+    styleClass="p-button-success"
+    (click)="addCar()"
+  ></p-button>
+</div>
 <h1>Car List for Users</h1>
-<!--<app-admin-cars></app-admin-cars>-->
+<app-admin-cars></app-admin-cars>
