@@ -1,8 +1,9 @@
 <ng-container>
   <h1>Vehicles</h1>
+  <p-button icon="pi pi-refresh " styleClass="p-button-text" class="pl-8" (click)="filter()"></p-button>
   <div class="card">
     <div class="grid">
-      <ng-container *ngFor="let item of cars">
+      <ng-container *ngFor="let item of filteredCars">
         <app-car-item [car]="item" class="d-flex justify-content-center col">
         </app-car-item>
       </ng-container>

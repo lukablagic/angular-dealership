@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Car } from 'src/app/shared/models/car.model';
 
 @Component({
   selector: 'app-admin-cars',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-cars.component.scss']
 })
 export class AdminCarsComponent {
+  car:Car;
 
+
+
+
+
+
+  getFilters(car:Car){
+this.car = car;
+  }
 }

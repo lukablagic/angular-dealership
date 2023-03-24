@@ -7,24 +7,22 @@ export class Car  {
   make?: string;
   model?: string;
   image?: SafeUrl;
-  price?: number;
-  year?: number;
-  mileage?: number;
+  price?: number| string;
+  year?: number| string;
+  mileage?: number| string;
   fuel?: string;
   transmission?: string;
-  engineSize?: number;
   paintId?: String;
   equipment?: Equipment;
 
   constructor() {
-    
-    this.model = 'Enter model';
+    this.make = "Any";
+    this.model = 'Any';
     this.price = 0;
     this.year = 0;
     this.mileage = 0;
-    this.fuel = 'Diesel';
-    this.transmission = 'RWD';
-    this.engineSize = 0;
+    this.fuel = 'Any';
+    this.transmission = 'Any';
     this.image = 'https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg';
     this.paintId = 'imagin-grey';
   }
@@ -41,7 +39,6 @@ export class Car  {
       mileage: this.mileage,
       fuel: this.fuel,
       transmission: this.transmission,
-      engineSize: this.engineSize,
       equipment: this.equipment ? this.equipment.toObject() : null,
     };
   }

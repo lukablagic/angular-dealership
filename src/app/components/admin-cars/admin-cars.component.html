@@ -1,9 +1,9 @@
 
 <div class="grid ml-10">
     <div class="col-12">
-        <app-filters ></app-filters>
+        <app-filters (carEventEmmiter)="getFilters($event)" ></app-filters>
     </div>
     <div class="col">
-        <app-admin-car-list></app-admin-car-list>
+       <app-admin-car-list [filters]="car"></app-admin-car-list>
     </div>
 </div>

@@ -73,7 +73,6 @@ export class CarFormComponent {
     this.carMileage = this.selectedMileage;
     this.car.fuel = this.carFuel;
     this.car.transmission = this.carTransmission;
-    this.car.engineSize = this.selectedEngine;
     this.equipment = new Equipment();
     this.car.equipment = this.equipment;
     

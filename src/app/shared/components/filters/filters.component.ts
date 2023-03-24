@@ -15,20 +15,20 @@ export class FiltersComponent {
     model: new FormControl(''),
     // carPrice: new FormControl('')
   });
-  carMake: string[] = ['Mercedes', 'BMW', 'Audi', 'Volkswagen', 'Ford'];
+  carMake: string[] = ["Any",'Mercedes', 'BMW', 'Audi', 'Volkswagen', 'Ford'];
   selectedMake: string;
   models: any[];
-  priceRange: number[] = [5000, 10000, 15000, 20000, 25000, 30000];
+  priceRange: (string | number)[] = ["Any",5000, 10000, 15000, 20000, 25000, 30000];
   selectedPriceRange: number;
-  mileageRange = [50000, 100000, 150000, 200000];
+  mileageRange:(string | number)[] = ["Any",50000, 100000, 150000, 200000];
   selectedMileageRange: number;
-  yearRange: number[] = [
+  yearRange: (string | number)[] = ["Any",
     2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
   ];
   selectedYearRange: number;
-  transmissionRange: string[] = ['RWD', 'FWD', '4x4'];
+  transmissionRange: string[] = ["Any",'RWD', 'FWD', '4x4'];
   selectedTransmissionRange: string;
-  fuelRange: string[] = ['Petrol', 'Diesel', 'Hybrid', 'Electric'];
+  fuelRange: string[] = ["Any",'Petrol', 'Diesel', 'Hybrid', 'Electric'];
   selectedFuelRange: string;
   selectedModelRange: string;
   car: Car = new Car();
@@ -55,6 +55,7 @@ export class FiltersComponent {
     switch (make) {
       case 'Mercedes':
         this.models = [
+          'Any',
           'A-Class',
           'B-Class',
           'C-Class',
@@ -68,6 +69,7 @@ export class FiltersComponent {
         break;
       case 'BMW':
         this.models = [
+          'Any',
           '1-Series',
           '2-Series',
           '3-Series',
@@ -87,6 +89,7 @@ export class FiltersComponent {
         break;
       case 'Audi':
         this.models = [
+          'Any',
           'A1',
           'A2',
           'A3',
@@ -105,6 +108,7 @@ export class FiltersComponent {
         break;
       case 'Volkswagen':
         this.models = [
+          'Any',
           'Arteon',
           'Beetle',
           'Bora',
@@ -117,6 +121,7 @@ export class FiltersComponent {
         break;
       case 'Ford':
         this.models = [
+          'Any',
           'B-Max',
           'C-Max',
           'EcoSport',

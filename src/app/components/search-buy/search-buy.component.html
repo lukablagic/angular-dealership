@@ -2,8 +2,8 @@
     <div class="col-1">
     </div>
     <div class="col-10">
-        <app-filters></app-filters>
-        <app-car-list></app-car-list>
+        <app-filters (carEventEmmiter)="getFilters($event)"></app-filters>
+        <app-car-list [filters]="car"></app-car-list>
     </div>
     <div class="col-1">
     </div>
