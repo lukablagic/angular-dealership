@@ -84,7 +84,7 @@ export class CarsAPIService {
   }
   getCarImageAngel(car: Car,view: string) {
     let model: string = car.model;
-    car.model = model;
+    car.model = model.replace( " ", "-");
     this.url =
       environment.apiBaseURL +
       '&make=' +
@@ -92,7 +92,8 @@ export class CarsAPIService {
       '&modelFamily=' +
       car.model +
       '&paintId=' +
-      car.paintId + '&angel=' + view;
+      car.paintId + '&angle=' + view;
+      console.log(this.url)
     return this.http.get(this.url, { responseType: 'blob' }).pipe(
       map((blob: Blob) => {
         const urlCreator = window.URL || window.webkitURL;
