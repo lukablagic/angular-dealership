@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuItem, SelectItem } from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
+import { AuthService } from 'src/app/services/auth.service';
 
 interface Language {
   name: string;
@@ -22,11 +23,11 @@ export class NavbarComponent {
   selectedLanguage: Language;
   visibleSidebar1: boolean = false;
 
-  constructor(private primengConfig: PrimeNGConfig) {}
+  constructor(private primengConfig: PrimeNGConfig,public auth:AuthService) {}
 
   ngOnInit() {
     this.items = [
-      { label: 'Best Cars', routerLink: ['/home']},
+      { label: 'Best Cars', routerLink: ['/home'], icon: 'pi pi-fw pi-car' },
       { label: 'Search and Buy', icon: 'pi pi-fw pi-shopping-cart' ,routerLink: ['/search-buy']},
       { label: 'Service and Repair', icon: 'pi pi-fw pi-info', routerLink: ['/service'] },
       { label: 'News and Reviews', icon: 'pi pi-fw pi-info',routerLink: ['/news'] },

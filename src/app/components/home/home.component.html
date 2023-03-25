@@ -46,18 +46,18 @@
   <div div class="grid">
     <p-card
       class="col"
-      *ngFor="let class of classes"
+      *ngFor="let class of cars"
       [style]="{ width: '360px' }"
     >
       <ng-template pTemplate="header">
         <img alt="Card" [src]="class.image" />
       </ng-template>
-      <p>{{ class.bodyName }}</p>
+      <p>{{ class.make }}</p>
       <ng-template pTemplate="footer">
-        <p>{{ class.description }}</p>
+        <p>{{ class.model }}</p>
         <p-button
           class="flex justify-content-center"
-          [label]="class.bodyName"
+          label="Buy"
           icon="pi"
         ></p-button>
       </ng-template>

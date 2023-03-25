@@ -1,8 +1,16 @@
+
 <div class="pb-5 px-3 pt-2">
-<p-menubar [model]="items">
+    <p-menubar [model]="items" *ngIf="auth.user$ |async as user; elese login">
+        <div>
+            <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" placeholder="" optionLabel="name"></p-dropdown>
+            <button type="button" pButton label="Sign Out" styleClass="p-button-danger" icon="" style="margin-left:.5em" (click)="auth.signOut()"></button>
+            <button pButton pRipple type="button" icon="pi pi-fw pi-shopping-cart"   (click)="visibleSidebar1 = true" class="p-button-text p-button-plain"></button>
+        </div>
+    </p-menubar>
+<p-menubar [model]="items" #login *ngIf="!(auth.user$ | async)" >
     <div>
         <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" placeholder="" optionLabel="name"></p-dropdown>
-        <button type="button" pButton label="Login" icon="" style="margin-left:.5em"></button>
+        <button type="button" pButton label="Login" icon="" style="margin-left:.5em" (click)="auth.googleSignIn()" routerLink="/auth"></button>
         <button pButton pRipple type="button" icon="pi pi-fw pi-shopping-cart"   (click)="visibleSidebar1 = true" class="p-button-text p-button-plain"></button>
     </div>
 </p-menubar>

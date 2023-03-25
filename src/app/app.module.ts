@@ -14,7 +14,6 @@ import {SidebarModule} from 'primeng/sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemsComponent } from './shared/components/items/items.component';
 import {DropdownModule} from 'primeng/dropdown';
-import { AuthComponent } from './components/auth/auth.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { PruductItemComponent } from './components/products/products-list/pruduct-item/pruduct-item.component';
@@ -55,7 +54,6 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     AppComponent,
     NavbarComponent,
     ItemsComponent,
-    AuthComponent,
     ProductsComponent,
     ProductsListComponent,
     PruductItemComponent,

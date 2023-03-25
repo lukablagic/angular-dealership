@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddcarsComponent } from './components/addcars/addcars.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchBuyComponent } from './components/search-buy/search-buy.component';
+import { AuthGuard } from './guards/auth.guard';
 import { DetailedCarComponent } from './shared/components/detailed-car/detailed-car.component';
 
 const routes: Routes = [
@@ -15,25 +16,24 @@ const routes: Routes = [
     path: 'home',
     pathMatch: 'full',
     component: HomeComponent,
-    //  canActivate: [AuthGuard],
   },
    {
     path: 'details',
     pathMatch: 'full',
     component: DetailedCarComponent,
-    //  canActivate: [AuthGuard],
+   canActivate: [AuthGuard],
   },
   {
     path: 'search-buy',
     pathMatch: 'full',
     component: SearchBuyComponent,
-    //  canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'addcars',
     pathMatch: 'full',
     component: AddcarsComponent,
-    //  canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
 
 ];
