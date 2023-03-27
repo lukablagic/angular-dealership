@@ -12,6 +12,8 @@ import { User } from '../shared/models/user';
 export class AuthService {
   user$: Observable<User>;
 
+
+
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -46,5 +48,8 @@ export class AuthService {
       photoURL,
     };
     return userRef.set(data, { merge: true });
+  }
+  getUser() {
+    return this.user$;
   }
 }

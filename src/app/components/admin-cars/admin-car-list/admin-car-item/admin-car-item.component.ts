@@ -16,7 +16,9 @@ export class AdminCarItemComponent {
   imageLeft: any;
   imageCenter: any;
   imageRight: any;
+  
   constructor(private api: CarsAPIService) {}
+  
   ngOnInit() {}
   
   removeCar() {

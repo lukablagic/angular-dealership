@@ -1,5 +1,5 @@
 export interface User {
-    uid: String;
+    uid: string;
     email: String;
     displayName: String;
     photoURL: String;

@@ -11,16 +11,24 @@ import { environment } from 'src/environments/environment';
 import { Car } from '../shared/models/car.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PaintCombinations, PaintData } from '../shared/models/paint.model';
+import { CarOrder } from '../shared/models/car-order';
+import { User } from '../shared/models/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarsAPIService {
   private dbCars = '/cars';
+  private dbOrders = '/orders';
+  private dbUsers = '/users';
   itemsCollection: AngularFirestoreCollection<any>;
   items: Observable<Car[]>;
+  ordersCollection: AngularFirestoreCollection<CarOrder>;
+  orders: Observable<CarOrder[]>;
+  usersCollection: AngularFirestoreCollection<User>;
   url: any;
  colors: PaintCombinations;
+ date: Date;
 
   constructor(
     private http: HttpClient,
@@ -101,5 +109,48 @@ export class CarsAPIService {
         return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
       })
     );
+  }
+//parameters car: Car, userId: string
+  buyCar( carId: string, userId: string){
+    let currnetDate= this.getCurrentDate();
+    let order: CarOrder = new CarOrder(carId, userId,currnetDate);
+    this.firestore.collection(this.dbOrders).add(order.toObject());
+    this.firestore.collection(this.dbCars).doc(carId).update({sold: true});
+  }
+  //parameters car: Car, userId: string
+  sellCar( car: Car, userId: string){
+    let order: CarOrder = new CarOrder(car.id, userId);
+    this.firestore.collection(this.dbOrders).doc(car.id).delete();
+    this.firestore.collection(this.dbCars).doc(car.id).update({sold: false});
+  }
+  getOrdersPayload(){
+    this.ordersCollection = this.firestore.collection(this.dbOrders);
+    return this.ordersCollection.snapshotChanges().pipe(
+      map((changes: any[]) => {
+        return changes.map((a) => ({
+          id: a.payload.doc.id,
+          ...a.payload.doc.data(),
+        }));
+      })
+    );
+  }
+  getUsersPayload(){
+    this.usersCollection = this.firestore.collection(this.dbUsers);
+    return this.usersCollection.snapshotChanges().pipe(
+      map((changes: any[]) => {
+        return changes.map((a) => ({
+          id: a.payload.doc.id,
+          ...a.payload.doc.data(),
+        }));
+      })
+    );
+  }
+  getCurrentDate(){
+    let currentDate = new Date();
+let year = currentDate.getFullYear();
+let month = currentDate.getMonth() + 1;
+let day = currentDate.getDate();
+let formattedDate = `${year}-${month}-${day}`;
+return  formattedDate ;
   }
 }

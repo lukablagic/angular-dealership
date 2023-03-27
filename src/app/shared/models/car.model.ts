@@ -13,6 +13,7 @@ export class Car  {
   fuel?: string;
   transmission?: string;
   paintId?: String;
+  sold: boolean;
   equipment?: Equipment;
 
   constructor() {
@@ -25,6 +26,7 @@ export class Car  {
     this.transmission = 'Any';
     this.image = 'https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg';
     this.paintId = 'imagin-grey';
+    this.sold = false;
   }
   setEqipment(equipment: Equipment) {
     this.equipment = equipment;

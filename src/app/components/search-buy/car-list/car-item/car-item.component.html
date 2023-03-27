@@ -15,14 +15,30 @@
         styleClass="p-button-lg p-button-warning w-100"
         label="Buy Now"
         icon="pi pi-plus"
+        (click)="buyCar()"
       ></p-button>
-      <a href="/details">
-        <p-button
-          class="d-flex justify-content-center w-100"
-          styleClass="p-button-lg p-button-blue w-100"
-          label="Details"
-        ></p-button>
-      </a>
+      <p-button
+        padding="10%"
+        (click)="showDialog(); getDetailPictures()"
+        label="Show Details"
+      ></p-button>
+      <p-dialog
+        header="Details"
+        [(visible)]="visible"
+        [modal]="true"
+        [style]="{ width: '50vw' }"
+        [draggable]="false"
+        [resizable]="false"
+      >
+        <p class="m-0">
+          <app-detailed-car
+            [car]="car"
+            [imageLeft]="imageLeft"
+            [imageCenter]="imageCenter"
+            [imageRight]="imageRight"
+          ></app-detailed-car>
+        </p>
+      </p-dialog>
     </ng-template>
   </p-card>
 </div>

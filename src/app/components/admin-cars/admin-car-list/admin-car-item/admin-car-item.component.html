@@ -19,7 +19,7 @@
       ></p-button>
       <p-button
         padding="10%"
-        (click)="showDialog();getDetailPictures()"
+        (click)="showDialog(); getDetailPictures()"
         label="Show Details"
       ></p-button>
       <p-dialog
@@ -31,7 +31,12 @@
         [resizable]="false"
       >
         <p class="m-0">
-          <app-detailed-car [car]="car" [imageLeft]="imageLeft" [imageCenter]="imageCenter" [imageRight]="imageRight" ></app-detailed-car>
+          <app-detailed-car
+            [car]="car"
+            [imageLeft]="imageLeft"
+            [imageCenter]="imageCenter"
+            [imageRight]="imageRight"
+          ></app-detailed-car>
         </p>
       </p-dialog>
     </ng-template>

@@ -48,6 +48,7 @@ export class FiltersComponent {
     this.car.mileage = this.selectedMileageRange;
     this.car.fuel = this.selectedFuelRange;
     this.car.transmission = this.selectedTransmissionRange;
+    this.car.sold = false;
       this.carEventEmmiter.emit(car);
   }
 
