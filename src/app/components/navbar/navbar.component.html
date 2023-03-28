@@ -14,8 +14,9 @@
         <button pButton pRipple type="button" icon="pi pi-fw pi-shopping-cart"   (click)="visibleSidebar1 = true" class="p-button-text p-button-plain"></button>
     </div>
 </p-menubar>
-<p-sidebar  [(visible)]="visibleSidebar1" [baseZIndex]="10000" position="right" >
+<p-sidebar styleClass="w-28rem" [(visible)]="visibleSidebar1" [baseZIndex]="10000" position="right" w-3 >
     <h1 style="font-weight:normal">Cart</h1>
+    <app-cart></app-cart>
     <p-panelMenu [model]="itemsModles" [style]="{'width':'300px'}"></p-panelMenu>
 </p-sidebar>
 </div>

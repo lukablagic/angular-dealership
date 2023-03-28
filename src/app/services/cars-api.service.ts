@@ -26,9 +26,11 @@ export class CarsAPIService {
   ordersCollection: AngularFirestoreCollection<CarOrder>;
   orders: Observable<CarOrder[]>;
   usersCollection: AngularFirestoreCollection<User>;
+  carsByUser: Observable<Car[]>;
+  ordersByUser: Observable<CarOrder[]>;
   url: any;
- colors: PaintCombinations;
- date: Date;
+  colors: PaintCombinations;
+  date: Date;
 
   constructor(
     private http: HttpClient,
@@ -36,6 +38,7 @@ export class CarsAPIService {
     private sanitizer: DomSanitizer
   ) {
     this.loadPayload();
+    this.getOrdersPayload();
   }
   loadPayload() {
     this.itemsCollection = this.firestore.collection(this.dbCars);
@@ -47,7 +50,6 @@ export class CarsAPIService {
         }));
       })
     );
-    this.items.subscribe((data) => console.log(data));
   }
 
   getAllCars() {
@@ -67,7 +69,7 @@ export class CarsAPIService {
   getColors(car: Car) {
     let url: string = environment.paintsURL + '&make=' + car.make;
     this.http.get(url).subscribe((data: PaintData) => {
-      this.colors =  data.paintCombinations;
+      this.colors = data.paintCombinations;
     });
     return this.colors;
   }
@@ -90,9 +92,9 @@ export class CarsAPIService {
       })
     );
   }
-  getCarImageAngel(car: Car,view: string) {
+  getCarImageAngel(car: Car, view: string) {
     let model: string = car.model;
-    car.model = model.replace( " ", "-");
+    car.model = model.replace(' ', '-');
     this.url =
       environment.apiBaseURL +
       '&make=' +
@@ -100,8 +102,10 @@ export class CarsAPIService {
       '&modelFamily=' +
       car.model +
       '&paintId=' +
-      car.paintId + '&angle=' + view;
-      console.log(this.url)
+      car.paintId +
+      '&angle=' +
+      view;
+    console.log(this.url);
     return this.http.get(this.url, { responseType: 'blob' }).pipe(
       map((blob: Blob) => {
         const urlCreator = window.URL || window.webkitURL;
@@ -110,22 +114,17 @@ export class CarsAPIService {
       })
     );
   }
-//parameters car: Car, userId: string
-  buyCar( carId: string, userId: string){
-    let currnetDate= this.getCurrentDate();
-    let order: CarOrder = new CarOrder(carId, userId,currnetDate);
-    this.firestore.collection(this.dbOrders).add(order.toObject());
-    this.firestore.collection(this.dbCars).doc(carId).update({sold: true});
-  }
   //parameters car: Car, userId: string
-  sellCar( car: Car, userId: string){
-    let order: CarOrder = new CarOrder(car.id, userId);
-    this.firestore.collection(this.dbOrders).doc(car.id).delete();
-    this.firestore.collection(this.dbCars).doc(car.id).update({sold: false});
+  buyCar(carId: string, userId: string) {
+    let currnetDate = this.getCurrentDate();
+    let order: CarOrder = new CarOrder(carId, userId, currnetDate);
+    this.firestore.collection(this.dbOrders).add(order.toObject());
+    this.firestore.collection(this.dbCars).doc(carId).update({ sold: true });
   }
-  getOrdersPayload(){
+
+  getOrdersPayload() {
     this.ordersCollection = this.firestore.collection(this.dbOrders);
-    return this.ordersCollection.snapshotChanges().pipe(
+    this.orders = this.ordersCollection.snapshotChanges().pipe(
       map((changes: any[]) => {
         return changes.map((a) => ({
           id: a.payload.doc.id,
@@ -134,7 +133,7 @@ export class CarsAPIService {
       })
     );
   }
-  getUsersPayload(){
+  getUsersPayload() {
     this.usersCollection = this.firestore.collection(this.dbUsers);
     return this.usersCollection.snapshotChanges().pipe(
       map((changes: any[]) => {
@@ -145,12 +144,39 @@ export class CarsAPIService {
       })
     );
   }
-  getCurrentDate(){
+  getCurrentDate() {
     let currentDate = new Date();
-let year = currentDate.getFullYear();
-let month = currentDate.getMonth() + 1;
-let day = currentDate.getDate();
-let formattedDate = `${year}-${month}-${day}`;
-return  formattedDate ;
+    let year = currentDate.getFullYear();
+    let month = currentDate.getMonth() + 1;
+    let day = currentDate.getDate();
+    let formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
+  }
+  getOrders() {
+    return this.orders;
+  }
+  
+  getOrdersByUser (userId: string): Observable<CarOrder[]> {
+    this.itemsCollection = this.firestore.collection(this.dbOrders, (ref) =>
+      ref.where('userId', '==', userId)
+    );
+    this.ordersByUser = this.itemsCollection.snapshotChanges().pipe(
+      map((changes: any[]) => {
+        return changes.map((a) => ({
+          id: a.payload.doc.id,
+          ...a.payload.doc.data(),
+          }));
+      })
+    );
+    
+    return this.ordersByUser;
+  }
+
+
+
+  // remove order and car availability from db  
+  removeOrder(order: CarOrder) {
+    this.firestore.collection(this.dbOrders).doc(order.id).delete();
+    this.firestore.collection(this.dbCars).doc(order.carId).update({ sold: false });
   }
 }

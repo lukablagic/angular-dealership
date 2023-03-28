@@ -46,6 +46,10 @@ import { FiltersComponent } from './shared/components/filters/filters.component'
 import { DetailedCarComponent } from './shared/components/detailed-car/detailed-car.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { CartComponent } from './components/cart/cart.component';
+import { CartListComponent } from './components/cart/cart-list/cart-list.component';
+import { CartItemComponent } from './components/cart/cart-list/cart-item/cart-item.component';
+import { ToastModule } from 'primeng/toast';
 //flex-layout
 
 
@@ -69,6 +73,9 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     AdminCarItemComponent,
     FiltersComponent,
     DetailedCarComponent,
+    CartComponent,
+    CartListComponent,
+    CartItemComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -82,6 +89,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     OverlayPanelModule,
     SliderModule,
     AngularFireModule,
+    ToastModule,
     ImageModule,
     GalleriaModule,
     AngularFireStorageModule,

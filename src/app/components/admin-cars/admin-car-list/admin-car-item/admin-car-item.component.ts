@@ -10,15 +10,14 @@ import { Car } from 'src/app/shared/models/car.model';
 })
 export class AdminCarItemComponent {
   @Input() car: Car;
-  @ViewChild(DetailedCarComponent) detailsCarComponent: DetailedCarComponent;
   carDetails: Car;
   visible: boolean;
   imageLeft: any;
   imageCenter: any;
   imageRight: any;
-  
+
   constructor(private api: CarsAPIService) {}
-  
+
   ngOnInit() {}
   
   removeCar() {

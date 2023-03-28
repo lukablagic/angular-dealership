@@ -1,0 +1,23 @@
+<div>
+  <p-card
+    class="cardMain"
+    [style]="{ width: '360px' }"
+    styleClass="p-card-shadow"
+  >
+    <ng-template pTemplate="header">
+      <img class="cImg" alt="Card" [src]="car.image" />
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <h3>{{ car.model }}</h3>
+      <p-toast></p-toast>
+      <p-button
+        styleClass="p-button-danger w-12"
+        label="Remove"
+        padding="10%"
+        (click)="removeOrder();"
+        icon="pi pi-minus"
+      ></p-button>
+    </ng-template>
+  </p-card>
+</div>
