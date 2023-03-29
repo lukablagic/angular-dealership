@@ -44,7 +44,6 @@ import { AdminCarListComponent } from './components/admin-cars/admin-car-list/ad
 import { AdminCarItemComponent } from './components/admin-cars/admin-car-list/admin-car-item/admin-car-item.component';
 import { FiltersComponent } from './shared/components/filters/filters.component';
 import { DetailedCarComponent } from './shared/components/detailed-car/detailed-car.component';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { CartComponent } from './components/cart/cart.component';
 import { CartListComponent } from './components/cart/cart-list/cart-list.component';
@@ -92,7 +91,6 @@ import { ToastModule } from 'primeng/toast';
     ToastModule,
     ImageModule,
     GalleriaModule,
-    AngularFireStorageModule,
     DropdownModule,
     FormsModule,
     CarouselModule,

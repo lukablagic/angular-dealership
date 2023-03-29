@@ -3,6 +3,7 @@
   "compileOnSave": true,
   "compilerOptions": {
     "resolveJsonModule": true,
+    "esModuleInterop": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

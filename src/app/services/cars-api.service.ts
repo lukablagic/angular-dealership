@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireModule, FirebaseApp } from '@angular/fire/compat';
 import {
   combineLatest,
   filter,
@@ -10,6 +10,7 @@ import {
   Observable,
   of,
   Subscription,
+  switchMap,
   tap,
 } from 'rxjs';
 import {
@@ -24,6 +25,10 @@ import { PaintCombinations, PaintData } from '../shared/models/paint.model';
 import { CarOrder } from '../shared/models/car-order';
 import { User } from '../shared/models/user';
 import { Equipment } from '../shared/models/equipment.model';
+import { AuthService } from './auth.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 @Injectable({
   providedIn: 'root',
 })
@@ -46,7 +51,9 @@ export class CarsAPIService {
   constructor(
     private http: HttpClient,
     private firestore: AngularFirestore,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private auth: AngularFireAuth,
+    
   ) {
     this.loadPayload();
     this.getOrdersPayload();
@@ -166,25 +173,23 @@ export class CarsAPIService {
   getOrders() {
     return this.orders;
   }
-  getOrdersByUser(uid: string) {
-    let ordersCollection = this.firestore
-        .collection(this.dbOrders, (ref) => ref.where('uid', '==', uid))
-        .valueChanges();
-    let cars: Car[] = [];
-    ordersCollection.pipe(
-        mergeMap((orders: CarOrder[]) => {
-            let carIds = orders.map((order) => order.carId);
-            let carObservables = carIds.map((carId) =>
-                this.firestore.collection('cars').doc(carId).valueChanges()
-            );
-            return forkJoin(carObservables);
-        })
-    ).subscribe((carsData: Car[]) => {
-        cars = carsData;
-        console.log(cars);
-    });
-    return cars;
-}
+  getCarsOrderedByCurrentUser(): Observable<Car[]> {
+    return this.auth.user.pipe(
+      map(user => user.uid),
+      switchMap(uid => 
+        this.firestore.collection<CarOrder>('orders', ref => ref.where('uid', '==', uid)).valueChanges()
+      ),
+      map(orders => orders.map(order => order.carId)),
+      switchMap(carIds => 
+        combineLatest(carIds.map(carId => this.firestore.collection('cars').doc(carId).valueChanges())) as Observable<Car[]>
+      ),
+      switchMap(cars => 
+        combineLatest(cars.map(car => this.getCarImage(car).pipe(
+          map(imageUrl => ({ ...car, image: imageUrl }))
+        ))) as Observable<Car[]>
+      )
+    );
+  }
 
   // remove order and car availability from db
   removeOrder(order: CarOrder) {

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CollectionReference } from 'firebase/firestore';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { CarsAPIService } from 'src/app/services/cars-api.service';
 import { CarOrder } from 'src/app/shared/models/car-order';
@@ -14,6 +14,7 @@ import { User } from 'src/app/shared/models/user';
 })
 export class CartListComponent {
   cars: Car[] = [];
+  carsObservable:Observable<any[]>
   user: User;
   orders: CarOrder[];
   AuthSub: Subscription;
@@ -23,7 +24,7 @@ export class CartListComponent {
    this.AuthSub = this.authService.getUser().subscribe((user: User) => {
       this.user = user;
       //console.log(this.user)
-      this.cars = this.api.getOrdersByUser(this.user.uid);
+      this.carsObservable = this.api.getCarsOrderedByCurrentUser();
 
       this.getCars();
     });
