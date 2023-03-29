@@ -1,7 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
-import { filter, map, Observable } from 'rxjs';
+import {
+  combineLatest,
+  filter,
+  forkJoin,
+  map,
+  mergeMap,
+  Observable,
+  of,
+  Subscription,
+  tap,
+} from 'rxjs';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -9,11 +19,11 @@ import {
 } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
 import { Car } from '../shared/models/car.model';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { PaintCombinations, PaintData } from '../shared/models/paint.model';
 import { CarOrder } from '../shared/models/car-order';
 import { User } from '../shared/models/user';
-
+import { Equipment } from '../shared/models/equipment.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -26,11 +36,12 @@ export class CarsAPIService {
   ordersCollection: AngularFirestoreCollection<CarOrder>;
   orders: Observable<CarOrder[]>;
   usersCollection: AngularFirestoreCollection<User>;
-  carsByUser: Observable<Car[]>;
+  carsByUser: any;
   ordersByUser: Observable<CarOrder[]>;
   url: any;
   colors: PaintCombinations;
   date: Date;
+  cars: Car[] = [];
 
   constructor(
     private http: HttpClient,
@@ -155,28 +166,32 @@ export class CarsAPIService {
   getOrders() {
     return this.orders;
   }
-  
-  getOrdersByUser (userId: string): Observable<CarOrder[]> {
-    this.itemsCollection = this.firestore.collection(this.dbOrders, (ref) =>
-      ref.where('userId', '==', userId)
-    );
-    this.ordersByUser = this.itemsCollection.snapshotChanges().pipe(
-      map((changes: any[]) => {
-        return changes.map((a) => ({
-          id: a.payload.doc.id,
-          ...a.payload.doc.data(),
-          }));
-      })
-    );
-    
-    return this.ordersByUser;
-  }
+  getOrdersByUser(uid: string) {
+    let ordersCollection = this.firestore
+        .collection(this.dbOrders, (ref) => ref.where('uid', '==', uid))
+        .valueChanges();
+    let cars: Car[] = [];
+    ordersCollection.pipe(
+        mergeMap((orders: CarOrder[]) => {
+            let carIds = orders.map((order) => order.carId);
+            let carObservables = carIds.map((carId) =>
+                this.firestore.collection('cars').doc(carId).valueChanges()
+            );
+            return forkJoin(carObservables);
+        })
+    ).subscribe((carsData: Car[]) => {
+        cars = carsData;
+        console.log(cars);
+    });
+    return cars;
+}
 
-
-
-  // remove order and car availability from db  
+  // remove order and car availability from db
   removeOrder(order: CarOrder) {
     this.firestore.collection(this.dbOrders).doc(order.id).delete();
-    this.firestore.collection(this.dbCars).doc(order.carId).update({ sold: false });
+    this.firestore
+      .collection(this.dbCars)
+      .doc(order.carId)
+      .update({ sold: false });
   }
 }

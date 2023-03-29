@@ -13,7 +13,7 @@ export class Car  {
   fuel?: string;
   transmission?: string;
   paintId?: String;
-  sold: boolean;
+  sold?: boolean;
   equipment?: Equipment;
 
   constructor() {

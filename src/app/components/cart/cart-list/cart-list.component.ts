@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { CollectionReference } from 'firebase/firestore';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { CarsAPIService } from 'src/app/services/cars-api.service';
 import { CarOrder } from 'src/app/shared/models/car-order';
@@ -11,36 +13,28 @@ import { User } from 'src/app/shared/models/user';
   styleUrls: ['./cart-list.component.scss'],
 })
 export class CartListComponent {
-  cars: Car[];
+  cars: Car[] = [];
   user: User;
   orders: CarOrder[];
+  AuthSub: Subscription;
+  subscriptions: Subscription[] = [];
+  counter: number = 0;
   constructor(private api: CarsAPIService, private authService: AuthService) {
-    this.authService.getUser().subscribe((user: User) => {
+   this.AuthSub = this.authService.getUser().subscribe((user: User) => {
       this.user = user;
+      //console.log(this.user)
+      this.cars = this.api.getOrdersByUser(this.user.uid);
+
       this.getCars();
     });
+   
   }
 
   ngOnInit() {}
 
   getCars() {
-    this.api.getOrdersByUser(this.user.uid).subscribe((data: CarOrder[]) => {
-      this.orders = data;
-      this.api.getAllCars().subscribe((data: Car[]) => {
-        this.cars = data;
-      });
-      this.orders.forEach((order) => {
-        this.cars.forEach((car) => {
-          if (order.carId == car.id) {
-            this.cars.push(car);
-          }
-        });
-        this.cars.forEach((car) => {
-          this.api.getCarImage(car).subscribe((image) => {
-            car.image = image;
-          });
-        });
-      });
-    });
+   // this.AuthSub.unsubscribe();
+     console.log(this.cars)
   }
+  ngDestroy() {}
 }
