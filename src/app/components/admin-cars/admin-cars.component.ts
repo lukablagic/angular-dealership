@@ -9,11 +9,6 @@ import { Car } from 'src/app/shared/models/car.model';
 export class AdminCarsComponent {
   car:Car;
 
-
-
-
-
-
   getFilters(car:Car){
 this.car = car;
   }

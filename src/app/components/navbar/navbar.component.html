@@ -1,6 +1,13 @@
 
 <div class="pb-5 px-3 pt-2">
-    <p-menubar [model]="items" *ngIf="auth.user$ |async as user; elese login">
+    <p-menubar [model]="itemsAdmin" *ngIf="(auth.user$ |async ) && (isAdmin  | async)">
+        <div>
+            <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" placeholder="" optionLabel="name"></p-dropdown>
+            <button type="button" pButton label="Sign Out" styleClass="p-button-danger" icon="" style="margin-left:.5em" (click)="auth.signOut()"></button>
+            <button pButton pRipple type="button" icon="pi pi-fw pi-shopping-cart"   (click)="visibleSidebar1 = true" class="p-button-text p-button-plain"></button>
+        </div>
+    </p-menubar>
+    <p-menubar [model]="items" #user *ngIf="(auth.user$ |async) && !(isAdmin  | async)">
         <div>
             <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" placeholder="" optionLabel="name"></p-dropdown>
             <button type="button" pButton label="Sign Out" styleClass="p-button-danger" icon="" style="margin-left:.5em" (click)="auth.signOut()"></button>
@@ -14,7 +21,7 @@
         <button pButton pRipple type="button" icon="pi pi-fw pi-shopping-cart"   (click)="visibleSidebar1 = true" class="p-button-text p-button-plain"></button>
     </div>
 </p-menubar>
-<p-sidebar styleClass="w-28rem" [(visible)]="visibleSidebar1" [baseZIndex]="10000" position="right" w-3 >
+<p-sidebar styleClass="w-28rem"  [(visible)]="visibleSidebar1" [baseZIndex]="10000" position="right" w-3 >
     <h1 style="font-weight:normal">Cart</h1>
     <app-cart></app-cart>
     <p-panelMenu [model]="itemsModles" [style]="{'width':'300px'}"></p-panelMenu>

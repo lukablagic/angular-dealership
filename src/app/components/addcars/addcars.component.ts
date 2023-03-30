@@ -41,6 +41,7 @@ export class AddcarsComponent {
 
   setCar(car: Car) {
     this.car = car;
+    this.car.sold = false;
     this.car.setEqipment(this.equipment);
   }
   addCar() {

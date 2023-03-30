@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { filter, map, Observable } from 'rxjs';
+import { filter, forkJoin, map, mergeMap, Observable } from 'rxjs';
 import { CarsAPIService } from 'src/app/services/cars-api.service';
 import { Car } from 'src/app/shared/models/car.model';
 
@@ -21,9 +21,8 @@ export class CarListComponent {
 
   loadCars() {
     this.api
-      .getAllCars().pipe( filter(cars =>
-        cars.every(car => car.sold !== true)
-        )).subscribe((data: any) => {
+      .getAllCars()
+        .subscribe((data: any) => {
         this.cars = data;
         this.filteredCars = this.cars;
         this.cars.forEach((car) => {

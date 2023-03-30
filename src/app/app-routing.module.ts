@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddcarsComponent } from './components/addcars/addcars.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchBuyComponent } from './components/search-buy/search-buy.component';
+import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
+import { AccessDeniedComponent } from './shared/components/access-denied/access-denied.component';
 import { DetailedCarComponent } from './shared/components/detailed-car/detailed-car.component';
 
 const routes: Routes = [
@@ -33,7 +35,12 @@ const routes: Routes = [
     path: 'addcars',
     pathMatch: 'full',
     component: AddcarsComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard,AdminGuard],
+  },
+  {
+    path: 'access-denied',
+    pathMatch: 'full',
+    component: AccessDeniedComponent,
   },
 
 ];

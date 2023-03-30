@@ -3,8 +3,8 @@
   <p-button icon="pi pi-refresh " styleClass="p-button-text" class="pl-8" (click)="filter()"></p-button>
   <div class="card">
     <div class="grid">
-      <ng-container *ngFor="let item of filteredCars">
-        <app-car-item [car]="item" class="d-flex justify-content-center col">
+      <ng-container *ngFor="let item of filteredCars" >
+        <app-car-item *ngIf="item.sold === false" [car]="item" class="d-flex justify-content-center col">
         </app-car-item>
       </ng-container>
     </div>

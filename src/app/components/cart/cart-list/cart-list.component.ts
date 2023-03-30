@@ -16,26 +16,20 @@ export class CartListComponent {
   cars: Car[] = [];
   carsObservable:Observable<any[]>
   user: User;
-  orders: CarOrder[];
-  AuthSub: Subscription;
-  subscriptions: Subscription[] = [];
-  counter: number = 0;
+  orders: Observable<CarOrder[]>;
+  
   constructor(private api: CarsAPIService, private authService: AuthService) {
-   this.AuthSub = this.authService.getUser().subscribe((user: User) => {
+    this.authService.getUser().subscribe((user: User) => {
       this.user = user;
-      //console.log(this.user)
       this.carsObservable = this.api.getCarsOrderedByCurrentUser();
 
-      this.getCars();
     });
    
   }
 
-  ngOnInit() {}
-
-  getCars() {
-   // this.AuthSub.unsubscribe();
-     console.log(this.cars)
+  ngOnChanges() {
+    this.carsObservable = this.api.getCarsOrderedByCurrentUser();
   }
-  ngDestroy() {}
+
+ 
 }

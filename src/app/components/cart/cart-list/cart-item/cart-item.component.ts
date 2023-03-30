@@ -12,6 +12,7 @@ import { User } from 'src/app/shared/models/user';
 })
 export class CartItemComponent {
   @Input() car: Car;
+  @Input() carOrder: CarOrder;
   carDetails: Car;
   visible: boolean;
   imageLeft: any;
@@ -28,7 +29,7 @@ export class CartItemComponent {
   ngOnInit() {}
  
   removeOrder() {
-    let order: CarOrder = new CarOrder(this.user.uid, this.car.id);
-    this.api.removeOrder(order);
+    console.log(this.car.id)
+    this.api.removeOrder(this.car.orderId,this.car.id);
   }
 }

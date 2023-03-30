@@ -14,6 +14,7 @@ export class Car  {
   transmission?: string;
   paintId?: String;
   sold?: boolean;
+  orderId?: string;
   equipment?: Equipment;
 
   constructor() {

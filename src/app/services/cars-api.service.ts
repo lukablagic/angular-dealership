@@ -23,7 +23,7 @@ import { Car } from '../shared/models/car.model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { PaintCombinations, PaintData } from '../shared/models/paint.model';
 import { CarOrder } from '../shared/models/car-order';
-import { User } from '../shared/models/user';
+import { Role, User } from '../shared/models/user';
 import { Equipment } from '../shared/models/equipment.model';
 import { AuthService } from './auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -57,6 +57,7 @@ export class CarsAPIService {
   ) {
     this.loadPayload();
     this.getOrdersPayload();
+    this.getUsersPayload();
   }
   loadPayload() {
     this.itemsCollection = this.firestore.collection(this.dbCars);
@@ -176,12 +177,23 @@ export class CarsAPIService {
   getCarsOrderedByCurrentUser(): Observable<Car[]> {
     return this.auth.user.pipe(
       map(user => user.uid),
-      switchMap(uid => 
-        this.firestore.collection<CarOrder>('orders', ref => ref.where('uid', '==', uid)).valueChanges()
+      switchMap(uid =>
+        this.ordersCollection.ref.where('uid', '==', uid).get()
       ),
-      map(orders => orders.map(order => order.carId)),
-      switchMap(carIds => 
-        combineLatest(carIds.map(carId => this.firestore.collection('cars').doc(carId).valueChanges())) as Observable<Car[]>
+      map(querySnapshot => {
+        return querySnapshot.docs.map(doc => {
+          const order = doc.data() as CarOrder;
+          return { id: doc.id, ...order } as CarOrder;
+        });
+      }),
+      switchMap(orders => 
+        combineLatest(
+          orders.map(order =>
+            this.itemsCollection.doc(order.carId).snapshotChanges().pipe(
+              map(changes => ({ id: changes.payload.id, orderId: order.id, ...changes.payload.data() } as Car))
+            )
+          )
+        ) as Observable<Car[]>
       ),
       switchMap(cars => 
         combineLatest(cars.map(car => this.getCarImage(car).pipe(
@@ -190,13 +202,34 @@ export class CarsAPIService {
       )
     );
   }
+  getUserRoleAdmin() {
+    return this.auth.user.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.usersCollection.doc(user.uid).snapshotChanges().pipe(
+            map(action => {
+              const data = action.payload.data() as User;
+              const role:Role = data ? data.role : null;
+              if (role.admin) {
+                return true;
+              }
+              return false;
+            })
+          );
+        } else {
+          return of(false);
+        }
+      })
+    );
+  }
+
 
   // remove order and car availability from db
-  removeOrder(order: CarOrder) {
-    this.firestore.collection(this.dbOrders).doc(order.id).delete();
-    this.firestore
-      .collection(this.dbCars)
-      .doc(order.carId)
+  removeOrder(orderId: string,carId:string) {
+    console.log(orderId)
+    this.ordersCollection.doc(orderId).delete();
+    this.itemsCollection
+      .doc(carId)
       .update({ sold: false });
   }
 }

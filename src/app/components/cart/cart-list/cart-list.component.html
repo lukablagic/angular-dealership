@@ -2,7 +2,7 @@
   <div class="card">
     <div class="grid">
       <ng-container *ngFor="let item of carsObservable |async">
-        <app-cart-item [car]="item" class="d-flex justify-content-center col">
+        <app-cart-item [car]="item" *ngIf="item.sold === true"  class="d-flex justify-content-center col">
         </app-cart-item>
       </ng-container>
     </div>

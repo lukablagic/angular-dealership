@@ -49,6 +49,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { CartListComponent } from './components/cart/cart-list/cart-list.component';
 import { CartItemComponent } from './components/cart/cart-list/cart-item/cart-item.component';
 import { ToastModule } from 'primeng/toast';
+import { AccessDeniedComponent } from './shared/components/access-denied/access-denied.component';
 //flex-layout
 
 
@@ -75,6 +76,7 @@ import { ToastModule } from 'primeng/toast';
     CartComponent,
     CartListComponent,
     CartItemComponent,
+    AccessDeniedComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
